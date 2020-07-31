@@ -7,7 +7,8 @@ const LocalStrategy = require("passport-local")
 // Requiring routes
 const indexRoutes = require("./routes/index")
 
-
+// Require database info from file
+require('./db/db')
 
 
 
