@@ -3,6 +3,27 @@ const router = express.Router()
 const passport = require("passport")
 const User = require("../models/user")
 
+
+
+// const Interest = require('../models/interest')
+
+// let interest = {
+//     name: "Cooking"
+// }
+
+// Interest.create(interest, (err, createdInterest)=> {
+//     if(err){
+//         console.log(err)
+//     } else{
+//         console.log(createdInterest)
+//     }
+// })
+
+
+
+
+
+
 // The Root Route
 router.get("/", (req, res) => {
     res.render("channels/landing")
