@@ -3,15 +3,15 @@ const router = express.Router()
 const passport = require("passport")
 const User = require("../models/user")
 
-// Get landing page
+// The Root Route
 router.get("/", (req, res) => {
-    res.render("landing.ejs")
+    res.render("channels/landing")
 })
 
 
 //Get register page
 router.get("/register", (req, res) => {
-    res.render("register.ejs")
+    res.render("index/register")
 })
 
 //Handle register logic
@@ -20,7 +20,7 @@ router.post("/register", (req, res) => {
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err)
-            return res.render("register.ejs")
+            return res.render("index/register")
         } 
         passport.authenticate("local")(req, res, function(){
             res.redirect("/")
@@ -30,7 +30,7 @@ router.post("/register", (req, res) => {
 
 //Get login page
 router.get("/login", (req, res) => {
-    res.render("login.ejs")
+    res.render("index/login.ejs")
 })
 
 //Handle login logic
