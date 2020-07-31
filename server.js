@@ -7,6 +7,7 @@ const User = require("./models/user")
 
 // Requiring routes
 const indexRoutes = require("./routes/index")
+const channelRoutes = require("./routes/channels")
 
 // Require database info from file
 require('./db/db')
@@ -27,6 +28,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride("_method"));
+app.set("view engine", "ejs");
 
 //A MIDDLEWARE FOR EVERY ROUTE IN ORDER TO REQ.USER
 app.use(function(req, res, next){
@@ -37,6 +39,7 @@ app.use(function(req, res, next){
 
 // Use routes
 app.use("/", indexRoutes)
+app.use("/channel", channelRoutes)
 
 app.listen(3000, ()=>{
     console.log("app is listening on port 3000")
