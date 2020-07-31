@@ -3,6 +3,7 @@ const app = express()
 const methodOverride = require("method-override")
 const passport = require("passport")
 const LocalStrategy = require("passport-local")
+const User = require("./models/user")
 
 // Requiring routes
 const indexRoutes = require("./routes/index")
