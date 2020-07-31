@@ -5,10 +5,10 @@ const postSchema = new mongoose.Schema({
     text: String,
     type: Date,
     tag: String,
-    user: [{
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }]
+    }
 
 })
 
