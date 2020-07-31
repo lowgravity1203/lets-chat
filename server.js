@@ -28,6 +28,11 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride("_method"));
 
+//A MIDDLEWARE FOR EVERY ROUTE IN ORDER TO REQ.USER
+app.use(function(req, res, next){
+	res.locals.currentUser = req.user;
+	next();
+})
 
 
 // Use routes
