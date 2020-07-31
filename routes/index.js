@@ -44,20 +44,20 @@ router.post("/register", (req, res) => {
             return res.render("index/register")
         } 
         passport.authenticate("local")(req, res, function(){
-            res.redirect("/")
+            res.redirect("/channel")
         })
     })
 })
 
 //Get login page
 router.get("/login", (req, res) => {
-    res.render("index/login.ejs")
+    res.render("index/login")
 })
 
 //Handle login logic
 router.post("/login", passport.authenticate("local",
     {
-        successRedirect: "/",
+        successRedirect: "/channel",
         failureRedirect: "/login"
     }), function(req, res){
 
