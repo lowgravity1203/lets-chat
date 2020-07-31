@@ -34,8 +34,12 @@ router.get("/login", (req, res) => {
 })
 
 //Handle login logic
-router.post("/login", (req, res) => {
-    res.send("post route worked")
+router.post("/login", passport.authenticate("local",
+    {
+        successRedirect: "/",
+        failureRedirect: "/login"
+    }), function(req, res){
+
 })
 
 
