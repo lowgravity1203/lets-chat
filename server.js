@@ -5,6 +5,25 @@ const passport = require("passport")
 const LocalStrategy = require("passport-local")
 
 
+app.get("/login", (req, res) => {
+    res.render("login.ejs")
+})
+
+app.post("/login", (req, res) => {
+    res.send("post route worked")
+})
+
+app.get("/register", (req, res) => {
+    res.render("register.ejs")
+})
+
+app.post("/register", (req, res) => {
+    res.send("post route worked")
+})
+
+
+
+
 
 
 
