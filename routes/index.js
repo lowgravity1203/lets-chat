@@ -3,7 +3,7 @@ const router = express.Router()
 const passport = require("passport")
 const User = require("../models/user")
 
-// The Root Route
+// The Root Route - get landing page
 router.get("/", (req, res) => {
     res.render("channels/landing")
 })
@@ -23,7 +23,7 @@ router.post("/register", (req, res) => {
             return res.render("index/register")
         } 
         passport.authenticate("local")(req, res, function(){
-            res.redirect("/channel")
+            res.redirect("/channel/interests")
         })
     })
 })
