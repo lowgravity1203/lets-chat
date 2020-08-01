@@ -6,6 +6,25 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div>
+        <ul>
+            <a href="/"></a>
+            <% if(!currentUser){ %>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Sign Up</a></li>
+            <% } else { %>
+                <a href="#"><li>Signed is as <%= currentUser.username %></li></a>
+                <li><a href="/logout">Logout</a></li>	
+            <% } %>
+        </ul>
+    </div>
+</nav>
+    <h1>This is the "choose your interests page</h1>
+
+    <ul>
+        <% interests.forEach(interest => { %>
+            <li><%= interest.name %> </li>
+        <% }) %>
+    </ul>
 </body>
 </html>
