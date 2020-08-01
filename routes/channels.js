@@ -48,11 +48,14 @@ router.get("/:user_id/:channel", (req, res) => {
        if(err){
            console.log(err)
        } else {
-           
           res.render("channels/" + req.params.channel, {currentChannel: foundChannel})
        }
     })
 })
 
+
+router.post("/:user_id/:channel", (req, res) => {
+    res.send("worked")
+})
 
 module.exports = router
