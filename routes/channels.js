@@ -18,8 +18,19 @@ router.get("/interests/:user_id", (req, res) => {
 
 //Post route to handle interests form
 router.post("/:user_id", (req, res) => {
-    let selected = req.body
-    console.log(selected)
+    const userSelected = req.body
+    const selectedInterests = Object.values(userSelected)
+    const obj = {name : selectedInterests}
+    User.findById(req.params.user_id, (err, foundUser) => {
+        if(err){
+            console.log(err)
+        } else {
+            foundUser.interests.push({name: selectedInterests})
+            console.log(foundUser.interests)
+            
+        
+        }
+    })
     res.redirect("/channel/" + req.user.id)
 })
 
