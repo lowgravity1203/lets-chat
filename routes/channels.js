@@ -5,7 +5,15 @@ const Interests = require("../models/interest")
 
 // Get route to index/main channel page
 router.get("/:user_id", (req, res) => {
-    res.render("channels/index")
+    User.findById(req.params.user_id, (err, foundUser) => {
+        if(err){
+            console.log(err)
+        } else {
+            
+            res.render("channels/index", {user: foundUser})
+        }
+    })
+    
 })
 
 // Get route to interests page
@@ -20,15 +28,12 @@ router.get("/interests/:user_id", (req, res) => {
 router.post("/:user_id", (req, res) => {
     const userSelected = req.body
     const selectedInterests = Object.values(userSelected)
-    const obj = {name : selectedInterests}
     User.findById(req.params.user_id, (err, foundUser) => {
         if(err){
             console.log(err)
         } else {
             foundUser.interests.push({name: selectedInterests})
-            console.log(foundUser.interests)
-            
-        
+            foundUser.save()
         }
     })
     res.redirect("/channel/" + req.user.id)

@@ -22,6 +22,13 @@
         </div>
     </nav>
     <h1>This is the main channel/index page</h1>
-    <a href="/channel/interests/<%= currentUser.id %>" >Interests</a>
+    <ul>
+        <% user.interests.forEach(interest => { %>
+            <% interest.name.forEach(item => { %>
+                <li><%= item %> </li>
+            <% }) %> 
+        <% }) %> 
+    </ul>
+    
 </body>
 </html>
