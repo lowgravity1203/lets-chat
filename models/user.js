@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
     displayName: String,
     email: String,
     interests: [{
-        name: String
+        name: [String]
     }]
 })
 
