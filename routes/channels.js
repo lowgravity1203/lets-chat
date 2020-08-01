@@ -39,7 +39,33 @@ router.post("/:user_id", (req, res) => {
     res.redirect("/channel/" + req.user.id)
 })
 
+// Add all get routes to render channels
 
+router.get("/:user_id/Technology", (req, res) => {
+    res.render("channels/technology", {user: req.user})
+})
+
+
+router.get("/:user_id/Animals", (req, res) => {
+    res.render("channels/animals", {user: req.user})
+})
+
+
+router.get("/:user_id/Science", (req, res) => {
+    res.render("channels/science", {user: req.user})
+})
+
+
+router.get("/:user_id/Education", (req, res) => {
+    res.render("channels/education", {user: req.user})
+})
+
+
+router.get("/:user_id/Art", (req, res) => {
+    res.render("channels/art", {user: req.user})
+})
+
+/////////////////////////////////////////////////////////
 
 
 module.exports = router

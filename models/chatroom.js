@@ -3,10 +3,7 @@ const Interest = require('./interest')
 const Post = require('./post')
 
 const chatroomSchema = new mongoose.Schema({
-    interest: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Interest'  
-    },
+    name: String,
     post: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Post'

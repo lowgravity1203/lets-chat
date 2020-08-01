@@ -25,7 +25,7 @@
     <ul>
         <% user.interests.forEach(interest => { %>
             <% interest.name.forEach(item => { %>
-                <li><%= item %> </li>
+                <li><a href="/channel/<%= currentUser.id %>/<%= item %>"><%= item %></a>  </li>
             <% }) %> 
         <% }) %> 
     </ul>
