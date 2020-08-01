@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 const User = require("../models/user")
 const Interests = require("../models/interest")
+const Channel = require("../models/channel")
 
 // Get route to index/main channel page
 router.get("/:user_id", (req, res) => {
@@ -33,7 +34,7 @@ router.post("/:user_id", (req, res) => {
             console.log(err)
         } else {
             foundUser.interests.push({name: selectedInterests})
-            foundUser.save()
+            // foundUser.save()
         }
     })
     res.redirect("/channel/" + req.user.id)
@@ -42,6 +43,7 @@ router.post("/:user_id", (req, res) => {
 // Add all get routes to render channels
 
 router.get("/:user_id/Technology", (req, res) => {
+
     res.render("channels/technology", {user: req.user})
 })
 
