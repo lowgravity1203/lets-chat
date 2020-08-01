@@ -3,6 +3,7 @@ const router = express.Router()
 const User = require("../models/user")
 const Interests = require("../models/interest")
 const Channel = require("../models/channel")
+const e = require("express")
 
 // Get route to index/main channel page
 router.get("/:user_id", (req, res) => {
@@ -34,40 +35,24 @@ router.post("/:user_id", (req, res) => {
             console.log(err)
         } else {
             foundUser.interests.push({name: selectedInterests})
-            // foundUser.save()
+            foundUser.save()
         }
     })
     res.redirect("/channel/" + req.user.id)
 })
 
-// Add all get routes to render channels
+// Get route to show any channel selected by user
 
-router.get("/:user_id/Technology", (req, res) => {
-
-    res.render("channels/technology", {user: req.user})
+router.get("/:user_id/:channel", (req, res) => {
+    Channel.findOne({name: req.params.channel}, (err, foundChannel) => {
+       if(err){
+           console.log(err)
+       } else {
+           
+          res.render("channels/" + req.params.channel, {currentChannel: foundChannel})
+       }
+    })
 })
-
-
-router.get("/:user_id/Animals", (req, res) => {
-    res.render("channels/animals", {user: req.user})
-})
-
-
-router.get("/:user_id/Science", (req, res) => {
-    res.render("channels/science", {user: req.user})
-})
-
-
-router.get("/:user_id/Education", (req, res) => {
-    res.render("channels/education", {user: req.user})
-})
-
-
-router.get("/:user_id/Art", (req, res) => {
-    res.render("channels/art", {user: req.user})
-})
-
-/////////////////////////////////////////////////////////
 
 
 module.exports = router

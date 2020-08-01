@@ -5,6 +5,8 @@ const bodyParser = require("body-parser")
 const passport = require("passport")
 const LocalStrategy = require("passport-local")
 const User = require("./models/user")
+const Channel = require("./models/channel")
+
 
 
 // Requiring routes

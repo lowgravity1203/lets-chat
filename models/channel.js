@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const chatroomSchema = new mongoose.Schema({
+const channelSchema = new mongoose.Schema({
     name: String,
     post: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -8,6 +8,6 @@ const chatroomSchema = new mongoose.Schema({
     }]
 })
 
-const Chatroom = mongoose.model('Chatroom', chatroomSchema)
+const Channel = mongoose.model('Channel', channelSchema)
 
-module.exports = Chatroom
+module.exports = Channel
