@@ -21,10 +21,12 @@
 </nav>
     <h1>This is the "choose your interests page</h1>
 
-    <ul>
+    <form>
         <% interests.forEach(interest => { %>
-            <li><%= interest.name %> </li>
+            <label for="<% interest.name %>"><%= interest.name %></label>
+            <input type="checkbox" id="<% interest.name %>" name="<% interest.name %>" value="<% interest.name %>"> <br>
         <% }) %>
-    </ul>
+        <button type="submit">Submit</button>
+        </form>
 </body>
 </html>
