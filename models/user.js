@@ -8,8 +8,7 @@ const UserSchema = new mongoose.Schema({
     displayName: String,
     email: String,
     interests: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Interest"
+        name: String
     }]
 })
 
