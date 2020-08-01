@@ -8,6 +8,7 @@ const User = require("./models/user")
 // Requiring routes
 const indexRoutes = require("./routes/index")
 const channelRoutes = require("./routes/channels")
+const Interest = require("./models/interest")
 
 // Require database info from file
 require('./db/db')
@@ -44,3 +45,12 @@ app.use("/channel", channelRoutes)
 app.listen(3000, ()=>{
     console.log("app is listening on port 3000")
 })
+
+
+
+
+
+
+
+	
+
