@@ -24,7 +24,7 @@ router.post("/register", (req, res) => {
             return res.render("index/register")
         } 
         passport.authenticate("local")(req, res, function(){
-            res.redirect("/channel/interests")
+            res.redirect("/channel/interests/" + req.user.id)
         })
     })
 })
@@ -35,12 +35,9 @@ router.get("/login", (req, res) => {
 })
 
 //Handle login logic
-router.post("/login", passport.authenticate("local",
-    {
-        successRedirect: "/channel",
-        failureRedirect: "/login"
-    }), function(req, res){
-
+router.post("/login", passport.authenticate("local"),
+   function(req, res){
+        res.redirect("/channel/" + req.user.id)
 })
 
 
