@@ -7,6 +7,11 @@
 </head>
 <body>
     <h1>This is the <%= currentChannel.name %> channel</h1>
-     
+    <form action="/channel/<%= currentUser.id %>/<%= currentChannel.name %>" method="POST">
+        <input type="text" name="text" placeholder="text"> <br>
+        <input type="text" name="date" placeholder="date"> <br>
+        <input type="text" name="tag" placeholder="tag"> <br>
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>

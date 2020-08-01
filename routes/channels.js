@@ -3,7 +3,7 @@ const router = express.Router()
 const User = require("../models/user")
 const Interests = require("../models/interest")
 const Channel = require("../models/channel")
-const e = require("express")
+const Post = require("../models/post")
 
 // Get route to index/main channel page
 router.get("/:user_id", (req, res) => {
@@ -53,9 +53,27 @@ router.get("/:user_id/:channel", (req, res) => {
     })
 })
 
-
+// Handle posting logic
 router.post("/:user_id/:channel", (req, res) => {
-    res.send("worked")
+    Channel.findOne({name: req.params.channel}, (err, channel) => {
+        if(err){
+            console.log(err)
+        } else {
+            Post.create(req.body, (err, post) => {
+                if(err){
+                    console.log(err)
+                } else {
+                    post.author.id = req.user.id
+                    post.author.username = req.user.username
+                    post.save()
+                    channel.post.push(post)
+                    channel.save()
+                    res.redirect("/channel/" + req.params.user_id + "/" + req.params.channel)
+                }
+            })
+        }
+    })
+    
 })
 
 module.exports = router
