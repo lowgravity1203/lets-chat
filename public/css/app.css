@@ -1,0 +1,23 @@
+:root {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  padding: 1rem;
+}
+
+.header {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+}

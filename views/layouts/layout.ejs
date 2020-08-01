@@ -3,14 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="/css/app.css" />
+    <title>DevChat</title>
   </head>
   <body>
+    <%- include('../partials/header.ejs') %>
+    <hr />
     <br />
-    header
+    <%- body %>
     <br />
-    fuck you <%- body %>
-    <br />
-    footer
+    <hr />
+    <%- include('../partials/footer.ejs') %>
   </body>
 </html>

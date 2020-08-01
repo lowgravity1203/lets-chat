@@ -1,0 +1,12 @@
+<nav class="footer">
+  <ul>
+    <li><a class="nav-link" href="/">Home</a></li>
+    <% if(!currentUser){ %>
+    <li><a href="/login">Login</a></li>
+    <li><a href="/register">Sign Up</a></li>
+    <% } else { %>
+    <a href="#"><li>Signed is as <%= currentUser.username %></li></a>
+    <li><a href="/logout">Logout</a></li>
+    <% } %>
+  </ul>
+</nav>
