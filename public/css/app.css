@@ -17,64 +17,88 @@ body {
   grid-template-columns: 1fr;
   box-sizing: border-box;
   font-size: 62.5%;
-  padding: 1rem;
+
+  /* background-color: #fff; */
+  background-color: #f5f5f5;
+
+  height: 100vh;
 }
 
 header {
-  background-color: lightgrey;
+  background-color: #2a60c7;
   border-radius: 0.5rem;
   height: 10vh;
+  margin: 0.25rem;
 }
 
-.header--flex {
+.header--grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'col-1 col-2';
+  height: 7vh;
+}
+
+.header--flex-ctn-1 {
+  display: flex;
+  justify-content: start;
+  padding: 0.1rem;
+}
+
+.header--flex-ctn-2 {
   display: flex;
   justify-content: space-around;
-  height: 7vh;
+  padding: 0.1rem;
 }
 
 .header__nav--items {
   font-size: 1.5rem;
   padding: 0.5rem;
   list-style-type: none;
+  text-shadow: 0.1rem 0.1rem black;
+}
+
+.header--col-1 {
+  grid-area: col-1;
+  list-style-type: none;
+}
+
+.header--col-2 {
+  grid-area: col-2;
+  list-style-type: none;
 }
 
 .main--grid {
   height: 70vh;
 }
-
+/* 
 .channel__index--section {
-  /*  */
 }
 .channel__interests--section {
-  /*  */
 }
 
 .channel__landing--section {
-  /*  */
 }
 
 .index__login--section {
-  /*  */
 }
 
 .index__profile--section {
-  /*  */
 }
 .index__register--section {
-  /*  */
-}
+} */
 
 footer {
   margin-top: 0rem;
-  background-color: lightgrey;
+  background-color: #2a60c7;
   border-radius: 0.5rem;
   height: 20vh;
+  margin: 0.25rem;
 }
 
 .footer--grid {
   font-size: 1rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 2fr 2fr 0.5fr;
   grid-template-areas: 'column-2 column-1 column-3';
 }
 .footer--col-1 {
@@ -94,19 +118,24 @@ footer {
 .footer--flex-ctn {
   display: flex;
   flex-direction: column;
-  padding: 0.25rem;
+  padding: 0.75rem;
 }
 
 .footer--flex-item {
   font-size: 0.8rem;
+  padding: 0.25rem 0 0.25rem 0;
+  text-shadow: 0.1rem 0.1rem black;
 }
 
 .flex-item--category {
   font-size: 1rem;
+  color: #e1c71c;
+  text-shadow: 0.1rem 0.1rem black;
 }
 
 .flex-item--logo {
-  /* font-size: 2rem; */
+  color: #e1c71c;
+  padding: 0 1rem 0.5rem 0;
 }
 
 a {
@@ -115,10 +144,10 @@ a {
 
 a:link,
 a:visited {
-  color: purple;
+  color: #e1c71c;
 }
 
 a:hover,
 a:active {
-  color: red;
+  color: #e1c71c;
 }
