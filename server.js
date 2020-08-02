@@ -1,9 +1,11 @@
 const express = require("express")
 const app = express()
 const methodOverride = require("method-override")
+const bodyParser = require("body-parser")
 const passport = require("passport")
 const LocalStrategy = require("passport-local")
 const User = require("./models/user")
+
 
 // Requiring routes
 const indexRoutes = require("./routes/index")
@@ -27,8 +29,9 @@ passport.deserializeUser(User.deserializeUser());
 
 // Use static file for css, urlencoded for req.body, and methodOverride
 app.use(express.static(__dirname + '/public'));
-app.use(express.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride("_method"));
+app.use(bodyParser.json())
 app.set("view engine", "ejs");
 
 //A MIDDLEWARE FOR EVERY ROUTE IN ORDER TO REQ.USER

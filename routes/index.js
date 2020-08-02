@@ -4,27 +4,7 @@ const passport = require("passport")
 const User = require("../models/user")
 
 
-
-// const Interest = require('../models/interest')
-
-// let interest = {
-//     name: "Cooking"
-// }
-
-// Interest.create(interest, (err, createdInterest)=> {
-//     if(err){
-//         console.log(err)
-//     } else{
-//         console.log(createdInterest)
-//     }
-// })
-
-
-
-
-
-
-// The Root Route
+// The Root Route - get landing page
 router.get("/", (req, res) => {
     res.render("channels/landing")
 })
@@ -44,23 +24,20 @@ router.post("/register", (req, res) => {
             return res.render("index/register")
         } 
         passport.authenticate("local")(req, res, function(){
-            res.redirect("/")
+            res.redirect("/channel/interests/" + req.user.id)
         })
     })
 })
 
 //Get login page
 router.get("/login", (req, res) => {
-    res.render("index/login.ejs")
+    res.render("index/login")
 })
 
 //Handle login logic
-router.post("/login", passport.authenticate("local",
-    {
-        successRedirect: "/",
-        failureRedirect: "/login"
-    }), function(req, res){
-
+router.post("/login", passport.authenticate("local"),
+   function(req, res){
+        res.redirect("/channel/" + req.user.id)
 })
 
 
