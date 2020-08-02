@@ -1,3 +1,5 @@
+/* CSS - BEM Convention */
+
 :root {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -11,13 +13,112 @@
 }
 
 body {
+  display: grid;
+  grid-template-columns: 1fr;
   box-sizing: border-box;
   font-size: 62.5%;
   padding: 1rem;
 }
 
-.header {
-  font-size: 1.5rem;
+header {
+  background-color: lightgrey;
+  border-radius: 0.5rem;
+  height: 10vh;
+}
+
+.header--flex {
   display: flex;
   justify-content: space-around;
+  height: 7vh;
+}
+
+.header__nav--items {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  list-style-type: none;
+}
+
+.main--grid {
+  height: 70vh;
+}
+
+.channel__index--section {
+  /*  */
+}
+.channel__interests--section {
+  /*  */
+}
+
+.channel__landing--section {
+  /*  */
+}
+
+.index__login--section {
+  /*  */
+}
+
+.index__profile--section {
+  /*  */
+}
+.index__register--section {
+  /*  */
+}
+
+footer {
+  margin-top: 0rem;
+  background-color: lightgrey;
+  border-radius: 0.5rem;
+  height: 20vh;
+}
+
+.footer--grid {
+  font-size: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: 'column-2 column-1 column-3';
+}
+.footer--col-1 {
+  grid-area: column-1;
+  list-style-type: none;
+}
+
+.footer--col-2 {
+  grid-area: column-2;
+  list-style-type: none;
+}
+.footer--col-3 {
+  grid-area: column-3;
+  list-style-type: none;
+}
+
+.footer--flex-ctn {
+  display: flex;
+  flex-direction: column;
+  padding: 0.25rem;
+}
+
+.footer--flex-item {
+  font-size: 0.8rem;
+}
+
+.flex-item--category {
+  font-size: 1rem;
+}
+
+.flex-item--logo {
+  /* font-size: 2rem; */
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link,
+a:visited {
+  color: purple;
+}
+
+a:hover,
+a:active {
+  color: red;
 }

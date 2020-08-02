@@ -1,22 +1,25 @@
-<h1>when I'm signed the fuck in</h1>
-<nav>
-  <div>
+<main class="main--grid">
+  <section class="channel__index--section">
+    <nav>
+      <div>
+        <ul>
+          <a href="/"></a>
+          <% if(!currentUser){ %>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Sign Up</a></li>
+          <% } else { %>
+          <a href="#"><li>Signed is as <%= currentUser.username %></li></a>
+          <li><a href="/logout">Logout</a></li>
+          <% } %>
+        </ul>
+      </div>
+    </nav>
+    <h1>#channel_index</h1>
     <ul>
-      <a href="/"></a>
-      <% if(!currentUser){ %>
-      <li><a href="/login">Login</a></li>
-      <li><a href="/register">Sign Up</a></li>
-      <% } else { %>
-      <a href="#"><li>Signed is as <%= currentUser.username %></li></a>
-      <li><a href="/logout">Logout</a></li>
-      <% } %>
+      <% user.interests.forEach(interest => { %> <% interest.name.forEach(item
+      => { %>
+      <li><%= item %></li>
+      <% }) %> <% }) %>
     </ul>
-  </div>
-</nav>
-<h1>This is the main channel/index page</h1>
-<ul>
-  <% user.interests.forEach(interest => { %> <% interest.name.forEach(item => {
-  %>
-  <li><%= item %></li>
-  <% }) %> <% }) %>
-</ul>
+  </section>
+</main>

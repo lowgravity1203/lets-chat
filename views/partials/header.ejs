@@ -1,12 +1,20 @@
-<nav>
-  <ul class="header">
-    <li><a class="nav-link" href="/">Home</a></li>
-    <% if(!currentUser){ %>
-    <li><a href="/login">Login</a></li>
-    <li><a href="/register">Sign Up</a></li>
-    <% } else { %>
-    <a href="#"><li>Signed is as <%= currentUser.username %></li></a>
-    <li><a href="/logout">Logout</a></li>
-    <% } %>
-  </ul>
-</nav>
+<header>
+  <nav>
+    <ul>
+      <div class="header--flex header__nav--items">
+        <li><a href="/">Home</a></li>
+        <% if(!currentUser){ %>
+        <li><a href="/login">Login</a></li>
+        <li>
+          <a href="/register">Sign Up</a>
+        </li>
+        <% } else { %>
+        <li>
+          <a href="#">Signed in is as <%= currentUser.username %></a>
+        </li>
+        <li><a href="/logout">Logout</a></li>
+        <% } %>
+      </div>
+    </ul>
+  </nav>
+</header>

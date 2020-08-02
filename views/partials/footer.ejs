@@ -1,12 +1,45 @@
-<nav class="footer">
-  <ul>
-    <li><a class="nav-link" href="/">Home</a></li>
-    <% if(!currentUser){ %>
-    <li><a href="/login">Login</a></li>
-    <li><a href="/register">Sign Up</a></li>
-    <% } else { %>
-    <a href="#"><li>Signed is as <%= currentUser.username %></li></a>
-    <li><a href="/logout">Logout</a></li>
-    <% } %>
-  </ul>
-</nav>
+<footer>
+  <nav class="footer--grid">
+    <div class="footer--col-1">
+      <div class="footer--flex-ctn">
+        <li class="footer--flex-item">
+          <strong class="flex-item--category">Product</strong>
+        </li>
+
+        <li class="footer--flex-item"><a href="/">abc</a></li>
+        <li class="footer--flex-item"><a href="#">xyz</a></li>
+      </div>
+    </div>
+    <div class="footer--col-2">
+      <div class="footer--flex-ctn">
+        <li class="flex-item--logo">
+          <a href="#">
+            <i class="fad fa-comments-alt fa-2x"></i>
+          </a>
+        </li>
+
+        <% if(!currentUser){ %>
+        <li class="footer--flex-item"><a href="/login">Login</a></li>
+        <li class="footer--flex-item"><a href="/register">Sign Up</a></li>
+        <% } else { %>
+        <li class="footer--flex-item">
+          <a href="#">Signed is as <%= currentUser.username %></a>
+        </li>
+        <li class="footer--flex-item"><a href="/logout">Logout</a></li>
+        <% } %>
+      </div>
+    </div>
+    <div class="footer--col-3">
+      <div class="footer--flex-ctn">
+        <li class="flex-item--category"><strong>Company</strong></li>
+
+        <li class="footer--flex-item">
+          <a href="#">About Us</a>
+        </li>
+        <li class="footer--flex-item">
+          <a href="#">blog</a>
+        </li>
+      </div>
+    </div>
+  </nav>
+</footer>
