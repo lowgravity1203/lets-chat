@@ -29,8 +29,8 @@ router.post("/:channel", (req, res) => {
 })
 
 // Handling delete post logic
-router.delete("/:channel/:comment_id", (req, res) => {
-    Post.findByIdAndRemove(req.params.comment_id, (err, deletedComment) => {
+router.delete("/:channel/:post_id", (req, res) => {
+    Post.findByIdAndRemove(req.params.post_id, (err, deletedComment) => {
         if(err){
             console.log(err)
         } else {
@@ -38,7 +38,7 @@ router.delete("/:channel/:comment_id", (req, res) => {
                 if(err){
                     console.log(err)
                 } else {
-                    foundChannel.post.remove(req.params.comment_id)
+                    foundChannel.post.remove(req.params.post_id)
                     foundChannel.save((err, updatedChannel) => {
                         if(err){
                             console.log(err)
@@ -51,5 +51,9 @@ router.delete("/:channel/:comment_id", (req, res) => {
         }
     })
 })
+
+
+
+
 
 module.exports = router
