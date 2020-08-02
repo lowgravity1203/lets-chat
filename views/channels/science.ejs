@@ -24,7 +24,10 @@
     <ul>
         <% currentChannel.post.forEach(comment => { %>
             <li>
-                <%= comment.author.username %> - <%= comment.text %> - <%= comment.date %>
+                Author: <%= comment.author.username %> <br>
+                Comment: <%= comment.text %> <br>
+                Tag: <%= comment.tag %> <br>
+                Date: <%= comment.date %> <br>
             </li>
         <% }) %>
     </ul>
