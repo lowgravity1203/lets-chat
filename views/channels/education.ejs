@@ -29,6 +29,10 @@
                 Comment: <%= comment.text %> <br>
                 Tag: <%= comment.tag %> <br>
                 Date: <%= comment.date %> <br>
+                <button><a href="">Edit</a></button>
+                <form action="/channel/<%= currentUser.id %>/<%= currentChannel.name %>?_method=DELETE" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
             </li>
         <% }) %>
     </ul>

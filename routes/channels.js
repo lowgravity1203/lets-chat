@@ -77,4 +77,10 @@ router.post("/:user_id/:channel", (req, res) => {
     
 })
 
+
+// Handling delete post logic
+router.delete("/:user_id/:channel", (req, res) => {
+    res.send("working")
+})
+
 module.exports = router
