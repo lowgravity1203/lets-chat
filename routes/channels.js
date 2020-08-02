@@ -11,7 +11,6 @@ router.get("/:user_id", (req, res) => {
         if(err){
             console.log(err)
         } else {
-            
             res.render("channels/index", {user: foundUser})
         }
     })
@@ -45,7 +44,6 @@ router.post("/:user_id", (req, res) => {
 
 router.get("/:user_id/:channel", (req, res) => {
     Channel.findOne({name: req.params.channel}).populate("post").exec(function(err, foundChannel) {
-
         if(err){
             console.log(err)
         } else {
@@ -53,29 +51,6 @@ router.get("/:user_id/:channel", (req, res) => {
         }
     })
 })
-
-// Handle posting logic
-router.post("/:user_id/:channel", (req, res) => {
-    Channel.findOne({name: req.params.channel}, (err, channel) => {
-        if(err){
-            console.log(err)
-        } else {
-            Post.create(req.body, (err, post) => {
-                if(err){
-                    console.log(err)
-                } else {
-                    post.author.id = req.user.id
-                    post.author.username = req.user.username
-                    post.save()
-                    channel.post.push(post)
-                    channel.save()
-                    res.redirect("/channel/" + req.params.user_id + "/" + req.params.channel)
-                }
-            })
-        }
-    }) 
-})
-
 
 
 

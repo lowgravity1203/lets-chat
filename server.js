@@ -7,6 +7,7 @@ const LocalStrategy = require("passport-local")
 const User = require("./models/user")
 const Channel = require("./models/channel")
 const Interest = require("./models/interest")
+const Post = require("./models/post")
 
 
 

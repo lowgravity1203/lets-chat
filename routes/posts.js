@@ -21,7 +21,7 @@ router.post("/:channel", (req, res) => {
                     post.save()
                     channel.post.push(post)
                     channel.save()
-                    res.redirect("/channel/" + req.params.user_id + "/" + req.params.channel)
+                    res.redirect("/channel/" + req.user.id + "/" + req.params.channel)
                 }
             })
         }
@@ -43,7 +43,7 @@ router.delete("/:channel/:comment_id", (req, res) => {
                         if(err){
                             console.log(err)
                         } else {
-                            res.redirect("/channel/" + req.params.user_id + "/" + req.params.channel)
+                            res.redirect("/channel/" + req.user.id + "/" + req.params.channel)
                         }
                     })
                 }
