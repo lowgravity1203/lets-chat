@@ -1,27 +1,9 @@
 const mongoose = require("mongoose")
 
-const connectionString = 'mongodb://localhost/letsTalk';
-
-//connect node to mongoose
-mongoose.connect(connectionString, { useNewUrlParser: true,
-                                     useUnifiedTopology: true,
-                                     useCreateIndex: true
-                                     });
-
-
-//connection event
-mongoose.connection.on('connected', () => {
-  console.log(`Mongoose connected to ${connectionString}`);
-});
-
-//error event
-mongoose.connection.on('error', (err) => {
-  console.log(`Mongoose connected error ${err}`);
-});
-
-//disconnect event
-mongoose.connection.on('disconnected', () => {
-  console.log('Mongoose disconnected');
-});
-
-mongoose.set('useUnifiedTopology', true)
+//database connection
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
+const connection = mongoose.connection;
+connection.once('open', () => {
+    console.log('Connected Database Successfully')
+})
