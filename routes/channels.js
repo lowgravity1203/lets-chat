@@ -5,17 +5,7 @@ const Interests = require("../models/interest")
 const Channel = require("../models/channel")
 const Post = require("../models/post")
 
-// Get route to index/main channel page
-router.get("/:user_id", (req, res) => {
-    User.findById(req.params.user_id, (err, foundUser) => {
-        if(err){
-            console.log(err)
-        } else {
-            res.render("channels/index", {user: foundUser})
-        }
-    })
-    
-})
+
 
 // Get route to interests page
 router.get("/interests/:user_id", (req, res) => {
@@ -40,8 +30,19 @@ router.post("/:user_id", (req, res) => {
     res.redirect("/channel/" + req.user.id)
 })
 
-// Get route to show any channel selected by user
+// Get route to index/main channel page
+router.get("/:user_id", (req, res) => {
+    User.findById(req.params.user_id, (err, foundUser) => {
+        if(err){
+            console.log(err)
+        } else {
+            res.render("channels/index", {user: foundUser})
+        }
+    })
+    
+})
 
+// Get route to show any channel selected by user
 router.get("/:user_id/:channel", (req, res) => {
     Channel.findOne({name: req.params.channel}).populate("post").exec(function(err, foundChannel) {
         if(err){
