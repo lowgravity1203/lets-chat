@@ -12,6 +12,7 @@ const Post = require('./models/post')
 const dotenv = require('dotenv').config()
 const mongoose = require("mongoose")
 
+
 //database connection
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});

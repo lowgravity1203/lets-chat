@@ -52,16 +52,20 @@ router.delete("/:channel/:post_id", (req, res) => {
     })
 })
 
-
+// Display edit page to edit a post
 router.get("/:channel/:post_id/edit", (req, res) => {
     Post.findById(req.params.post_id, (err, foundPost) => {
         if(err){
             console.log(err)
         } else {
-            res.render("posts/edit", {post: foundPost})
+            res.render("posts/edit", {post: foundPost, channel: req.params.channel})
         }
     })
-    
+})
+
+// Handle edit post logic
+router.put("/:channel/:post_id/edit", (req, res) => {
+    res.send("connected")
 })
 
 
