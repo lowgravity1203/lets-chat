@@ -28,6 +28,8 @@ router.post("/:channel", (req, res) => {
     }) 
 })
 
+
+
 // Handling delete post logic
 router.delete("/:channel/:post_id", (req, res) => {
     Post.findByIdAndRemove(req.params.post_id, (err, deletedComment) => {
@@ -52,16 +54,46 @@ router.delete("/:channel/:post_id", (req, res) => {
     })
 })
 
-
+// Display edit page to edit a post
 router.get("/:channel/:post_id/edit", (req, res) => {
     Post.findById(req.params.post_id, (err, foundPost) => {
         if(err){
             console.log(err)
         } else {
-            res.render("posts/edit", {post: foundPost})
+            res.render("posts/edit", {post: foundPost, channel: req.params.channel})
         }
     })
-    
+})
+
+// Handle edit post logic
+router.put("/:channel/:post_id/edit", (req, res) => {
+    Post.findByIdAndUpdate(req.params.post_id, req.body, (err, updatedPost) => {
+        if(err){
+            console.log(err)
+        } else {
+            Channel.findOne({name: req.params.channel}, (err, foundChannel) => {
+                if(err){
+                    console.log(err)
+                } else {
+                    foundChannel.post.remove(req.params.post_id)
+                    foundChannel.save((err, savedChannel) => {
+                        if(err){
+                            console.log(err)
+                        } else {
+                            foundChannel.post.push(updatedPost)
+                            foundChannel.save((err, savedChannel) => {
+                                if(err){
+                                    console.log(err)
+                                } else {
+                                    res.redirect("/channel/" + req.user.id + "/" + req.params.channel)
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+        }
+    })
 })
 
 
