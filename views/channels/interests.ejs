@@ -1,31 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div>
-        <ul>
-            <a href="/"></a>
-            <% if(!currentUser){ %>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Sign Up</a></li>
-            <% } else { %>
-                <a href="#"><li>Signed is as <%= currentUser.username %></li></a>
-                <li><a href="/logout">Logout</a></li>	
-            <% } %>
-        </ul>
-    </div>
-</nav>
-    <h1>This is the "choose your interests page</h1>
+<main class="main--grid">
+  <section class="channel__interests--section">
+    <h1>#channel_interests</h1>
+
+    <h1><span style="color:red">Todo:</span>Add data to mongo</h1>
 
     <form action="/channel/<%= currentUser._id %> " method="POST">
-        <% interests.forEach(interest => { %>
-            <label><input type="checkbox" id="<%= interest.name %>" name="<%= interest.name %>" value="<%= interest.name %>"><%= interest.name %></label> <br>
-        <% }) %>
-        <button type="submit">Submit</button>
-        </form>
-</body>
-</html>
+      <% interests.forEach(interest => { %>
+      <label
+        ><input
+          type="checkbox"
+          id="<%= interest.name %>"
+          name="<%= interest.name %>"
+          value="<%= interest.name %>"
+        /><%= interest.name %></label
+      >
+      <br />
+      <% }) %>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+</main>
