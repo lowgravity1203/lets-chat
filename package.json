@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "sass": "node-sass public/css/sass/ -o public/css/",
+    "sass-watch": "npm run sass && npm run sass -- -w"
   },
   "repository": {
     "type": "git",
