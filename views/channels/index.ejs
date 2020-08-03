@@ -8,7 +8,9 @@
           <li><a href="/login">Login</a></li>
           <li><a href="/register">Sign Up</a></li>
           <% } else { %>
-          <a href="#"><li>Signed is as <%= currentUser.username %></li></a>
+          <a href="#">
+            <li>Signed is as <%= currentUser.username %></li>
+          </a>
           <li><a href="/logout">Logout</a></li>
           <% } %>
         </ul>
@@ -16,12 +18,13 @@
     </nav>
     <h1>#channel_index</h1>
     <ul>
-      <% user.interests.forEach(interest => { %> <% interest.name.forEach(item
-      => { %>
+      <% user.interests.forEach(interest => { %>
+      <% interest.name.forEach(item => { %>
       <li>
         <a href="/channel/<%= currentUser.id %>/<%= item %>"><%= item %></a>
       </li>
-      <% }) %> <% }) %>
+      <% }) %>∏
+      <% }) %>
     </ul>
   </section>
 </main>

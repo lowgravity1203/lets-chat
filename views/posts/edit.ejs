@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit post</title>
 </head>
+
 <body>
     <nav>
         <div>
             <ul>
                 <a href="/"></a>
                 <% if(!currentUser){ %>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Sign Up</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Sign Up</a></li>
                 <% } else { %>
-                    <a href="#"><li>Signed is as <%= currentUser.username %></li></a>
-                    <li><a href="/logout">Logout</a></li>	
+                <a href="#">
+                    <li>Signed is as <%= currentUser.username %></li>
+                </a>
+                <li><a href="/logout">Logout</a></li>
                 <% } %>
             </ul>
         </div>
@@ -27,8 +31,9 @@
         Text: <input type="text" name="text" value="<%= post.text %>"><br>
         Tag: <input type="text" name="tag" value="<%= post.tag %>"><br>
         Date: <input type="text" name="date" value="<%= post.date %>"><br>
-        <button type="Submit">Submit</button>
+        <button type="Submit">Submit </button>
     </form>
 
 </body>
+
 </html>
