@@ -1,19 +1,5 @@
 <main class="main--grid">
   <section class="channel__landing--section">
     <h1>#channel_landing</h1>
-      <section class="section--inactive">
-      <% if(!currentUser) { %>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">Sign Up</a></li>
-      </section>
-      <% } else { %>
-        <section class="section--active">
-          <a href="#">
-          <h1>Hello <%= currentUser.username %></h1>
-          </a>
-          <li><a href="/logout">Logout</a></li>
-      <% } %>
-        </section>
-      </ul>
   </section>
 </main>
