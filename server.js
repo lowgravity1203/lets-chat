@@ -5,12 +5,14 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const User = require('./models/user')
-const expressLayouts = require('express-ejs-layouts')
+const Channel = require('./models/channel')
+const Interest = require('./models/interest')
+const Post = require('./models/post')
 
 // Requiring routes
 const indexRoutes = require('./routes/index')
 const channelRoutes = require('./routes/channels')
-const Interest = require('./models/interest')
+const postRoutes = require('./routes/posts')
 
 // Require database info from file
 require('./db/db')
@@ -47,6 +49,7 @@ app.use(function(req, res, next) {
 // Use routes
 app.use('/', indexRoutes)
 app.use('/channel', channelRoutes)
+app.use('/channel/:user_id', postRoutes)
 
 app.listen(3000, () => {
   console.log('app is listening on port 3000')
