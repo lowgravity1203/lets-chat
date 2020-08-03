@@ -53,7 +53,16 @@ router.delete("/:channel/:post_id", (req, res) => {
 })
 
 
-
+router.get("/:channel/:post_id/edit", (req, res) => {
+    Post.findById(req.params.post_id, (err, foundPost) => {
+        if(err){
+            console.log(err)
+        } else {
+            res.render("posts/edit", {post: foundPost})
+        }
+    })
+    
+})
 
 
 module.exports = router
