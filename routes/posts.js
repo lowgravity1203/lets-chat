@@ -65,7 +65,33 @@ router.get("/:channel/:post_id/edit", (req, res) => {
 
 // Handle edit post logic
 router.put("/:channel/:post_id/edit", (req, res) => {
-    res.send("connected")
+    Post.findByIdAndUpdate(req.params.post_id, req.body, (err, updatedPost) => {
+        if(err){
+            console.log(err)
+        } else {
+            Channel.findOne({name: req.params.channel}, (err, foundChannel) => {
+                if(err){
+                    console.log(err)
+                } else {
+                    foundChannel.post.remove(req.params.post_id)
+                    foundChannel.save((err, savedChannel) => {
+                        if(err){
+                            console.log(err)
+                        } else {
+                            foundChannel.post.push(updatedPost)
+                            foundChannel.save((err, savedChannel) => {
+                                if(err){
+                                    console.log(err)
+                                } else {
+                                    res.redirect("/channel/" + req.user.id + "/" + req.params.channel)
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+        }
+    })
 })
 
 
