@@ -28,6 +28,8 @@ router.post("/:channel", (req, res) => {
     }) 
 })
 
+
+
 // Handling delete post logic
 router.delete("/:channel/:post_id", (req, res) => {
     Post.findByIdAndRemove(req.params.post_id, (err, deletedComment) => {
