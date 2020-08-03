@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div>
+            <ul>
+                <a href="/"></a>
+                <% if(!currentUser){ %>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Sign Up</a></li>
+                <% } else { %>
+                    <a href="#"><li>Signed is as <%= currentUser.username %></li></a>
+                    <li><a href="/logout">Logout</a></li>	
+                <% } %>
+            </ul>
+        </div>
+    </nav>
+    <h1>This is the <%= currentChannel.name %> channel</h1>
+    <ul>
+        <% currentChannel.post.forEach(post => { %>
+            <li>
+                Author: <%= post.author.username %> <br>
+                Comment: <%= post.text %> <br>
+                Tag: <%= post.tag %> <br>
+                Date: <%= post.date %> <br>
+                <button><a href="">Edit</a></button>
+                <form action="/channel/<%= currentUser.id %>/<%= currentChannel.name %>/<%= post.id %>?_method=DELETE" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+    <form action="/channel/<%= currentUser.id %>/<%= currentChannel.name %>" method="POST">
+        <input type="text" name="text" placeholder="text"> <br>
+        <input type="text" name="date" placeholder="date"> <br>
+        <input type="text" name="tag" placeholder="tag"> <br>
+        <button type="submit">Submit</button>
+    </form>
+    <a href="/channel/<%= currentUser._id %> ">Back to main channel</a>
+</body>
+</html>
