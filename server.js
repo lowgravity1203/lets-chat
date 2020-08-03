@@ -12,13 +12,19 @@ const Post = require('./models/post')
 const dotenv = require('dotenv').config()
 const mongoose = require("mongoose")
 
-// let data = "routes"
+// let data = "git"
 
-// Channel.findOne({name: "Technology"}, (err, foundChannel) => {
+// Channel.findOne({name: "Tutoring"}, (err, foundChannel) => {
 //   if(err){
 //     console.log(err)
 //   }else {
-//     console.log(foundChannel)
+//     foundChannel.tag.push(data)
+//     foundChannel.save((err, savedChannel) => {
+//       if(err) {
+//         console.log(err)
+//       } else 
+//       console.log(foundChannel)
+//     })
 //   }
 // })
 

@@ -44,7 +44,9 @@ router.get("/:user_id", (req, res) => {
 
 // Get route to show any channel selected by user
 router.get("/:user_id/:channel", (req, res) => {
-    Channel.findOne({name: req.params.channel}).populate("post").exec(function(err, foundChannel) {
+    Channel.findOne({name: req.params.channel})
+    .populate("post")
+    .exec(function(err, foundChannel) {
         if(err){
             console.log(err)
         } else {

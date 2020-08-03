@@ -28,7 +28,6 @@
                 Comment: <%= post.text %> <br>
                 Tag: <%= post.tag %> <br>
                 Date: <%= post.date %> <br>
-                <!-- If the user created the post, he/she will be able to see the edit and delete buttons -->
                 <% if(currentUser && post.author.id.equals(currentUser.id)) { %>
                     <button><a href="/channel/<%= currentUser.id %>/<%= currentChannel.name %>/<%= post.id %>/edit">Edit</a></button>
                     <form action="/channel/<%= currentUser.id %>/<%= currentChannel.name %>/<%= post.id %>?_method=DELETE" method="POST">
@@ -41,7 +40,11 @@
     <form action="/channel/<%= currentUser.id %>/<%= currentChannel.name %>" method="POST">
         <input type="text" name="text" placeholder="text"> <br>
         <input type="text" name="date" placeholder="date"> <br>
-        <input type="text" name="tag" placeholder="tag"> <br>
+        <select name="tag">
+            <% currentChannel.tag.forEach(tag => { %>
+                <option value="<%= tag %>"><%= tag %></option>
+            <% }) %>
+        </select> <br>
         <button type="submit">Submit</button>
     </form>
     <a href="/channel/<%= currentUser._id %> ">Back to main channel</a>
