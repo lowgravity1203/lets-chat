@@ -1,7 +1,7 @@
-const mongoose = require("mongoose")
+const mongoose = require('mongoose')
 
 const interestSchema = new mongoose.Schema({
-    name: String
+  name: String,
 })
 
 const Interest = mongoose.model('Interest', interestSchema)
