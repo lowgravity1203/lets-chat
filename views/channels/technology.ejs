@@ -39,11 +39,15 @@
         <% }) %>
     </ul>
     
-
+   
     <form action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>" method="POST">
         <input type="text" name="text" placeholder="text"> <br>
         <input type="text" name="date" placeholder="date"> <br>
-        <input type="text" name="tag" placeholder="tag"> <br>
+        <select>
+            <% currentChannel.tag.forEach(tag => { %>
+                <option value="<%= tag %>"><%= tag %></option>
+            <% }) %>
+        </select> <br>
         <button type="submit">Submit</button>
     </form>
     <a href="/channel/<%= currentUser._id %> ">Back to main channel</a>
