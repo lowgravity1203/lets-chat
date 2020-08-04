@@ -1,11 +1,18 @@
 <main class="main--grid">
     <div class="channel--grid">
-        <div class="boxes box1">Header</div>
-        <div class="boxes box2">Post Sidebar</div>
-           
+        <div class="boxes box1">Header
+
+        </div>
+
+        <!-- Posts sorted by tag will display here -->
+        <div class="boxes box2">Post Sidebar
+
+        </div>
+        
+        <!-- This will display the other channels  -->
         <div class="boxes box3">Channel Sidebar
             <ul>
-                <% user.interests.forEach(interest => { %>
+                <% currentUser.interests.forEach(interest => { %>
                     <% interest.name.forEach(item => { %>
                         <li>
                             <a href="/channel/<%= currentUser._id %>/<%= item %>"><%= item %></a>
@@ -14,8 +21,39 @@
                 <% }) %>
             </ul>
         </div>
-        <div class="boxes box4">Main</div>
-        <div class="boxes box5">Make a Post</div>
+
+        <!-- This will display the posts -->
+        <div class="boxes box4">Main
+            <ul>
+                <% currentChannel.post.forEach(post => { %>
+                    <li>
+                        Author: <%= post.author.username %> <br>
+                        Comment: <%= post.text %> <br>
+                        Tag: <%= post.tag %> <br>
+                        Date: <%= date %> <br>
+                        <% if(currentUser && post.author.id === currentUser.id) { %>
+                            <button><a href="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/edit">Edit</a></button>
+                            <form action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>?_method=DELETE" method="POST">
+                                <button type="submit">Delete</button>
+                            </form>
+                        <% } %> 
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
+
+        <!-- You can write a post here -->
+        <div class="boxes box5">Make a Post
+            <form action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>" method="POST">
+                <input type="text" name="text" placeholder="text"> <br>
+                <select name="tag">
+                    <% currentChannel.tag.forEach(tag => { %>
+                            <option value="<%= tag %>"><%= tag %></option>
+                    <% }) %>
+                </select> <br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </div>
 </main>
 
