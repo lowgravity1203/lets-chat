@@ -8,4 +8,12 @@
       <a href="">Login using FaceBook</a>
     </form>
   </section>
+  <% if (!user) { %>
+    <div style="width:500px;height:180px;">
+      <h3 style="font-size:40px;">Welcome! Please log in.</h>
+      <a href="/auth/facebook">facebook</a>
+      </div>
+  <% } else { %>
+      <h2>Hello, <%= user.displayName %>.</h2>
+  <% } %>
 </main>

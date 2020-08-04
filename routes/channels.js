@@ -22,7 +22,7 @@ router.get("/interests/:user_id", (req, res) => {
 router.post("/:user_id", (req, res) => {
     const userSelected = req.body
     const selectedInterests = Object.values(userSelected)
-    User.findById(req.params.user_id, (err, foundUser) => {
+    User.findOne({facebook_id: req.params.user_id}, (err, foundUser) => {
         if(err){
             console.log(err)
         } else {
@@ -30,12 +30,12 @@ router.post("/:user_id", (req, res) => {
             foundUser.save()
         }
     })
-    res.redirect("/channel/" + req.user.id)
+    res.redirect("/channel/" + req.user.facebook_id)
 })
 
 // Get route to index/main channel page
 router.get("/:user_id", (req, res) => {
-    User.findById(req.params.user_id, (err, foundUser) => {
+    User.findOne({facebook_id: req.params.user_id}, (err, foundUser) => {
         if(err){
             console.log(err)
         } else {
