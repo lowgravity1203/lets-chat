@@ -5,7 +5,7 @@
            
         <div class="boxes box3">Channel Sidebar
             <ul>
-                <% user.interests.forEach(interest => { %>
+                <% currentUser.interests.forEach(interest => { %>
                     <% interest.name.forEach(item => { %>
                         <li>
                             <a href="/channel/<%= currentUser._id %>/<%= item %>"><%= item %></a>

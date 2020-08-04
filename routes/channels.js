@@ -18,20 +18,18 @@ router.get("/interests/:user_id", (req, res) => {
     })
 })
 
+//Get route to the main channel page
 router.get("/:user_id/main", (req, res) => {
     Channel.findOne({name: "Main"}, (err, mainChannel) => {
         if(err){
             console.log(err)
         } else {
-            User.findById(req.params.user_id, (err, foundUser) => {
-                if(err)console.log(err)
-                res.render("channels/main", {user: foundUser})
-            })
+            res.render("channels/main")
         }
     })
 })
 
-// Get route to show any channel selected by user
+// Get route to channel selected by user
 router.get("/:user_id/:channel", (req, res) => {
     Channel.findOne({name: req.params.channel})
     .populate("post")

@@ -14,12 +14,25 @@
         </div>
     </div>
         <div class="boxes box2">Post Sidebar</div>
-           
+        
+        <!-- Where all other channels will be displayed -->
         <div class="boxes box3">Channel Sidebar
-
-
-
+            
+            <ul>
+                <li><a href="/channel/<%= currentUser._id %>/main">Main</a></li>
+                <% currentUser.interests.forEach(interest => { %>
+                    <% interest.name.forEach(item => { %>
+                        <% if(currentChannel.name !== item){ %>
+                            <li>
+                                <a href="/channel/<%= currentUser._id %>/<%= item %>"><%= item %></a>
+                            </li>
+                        <% } %> 
+                    <% }) %>
+                <% }) %>
+            </ul>
         </div>
+
+        <!-- Where the posts will be displayed -->
         <div class="boxes box4">Main
             <ul>
                 <% currentChannel.post.forEach(post => { %>
@@ -37,12 +50,10 @@
                     </li>
                 <% }) %>
             </ul>
-
-
-
         </div>
-        <div class="boxes box5">Make a Post
 
+        <!-- Where you can write a post -->
+        <div class="boxes box5">Make a Post
             <form action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>" method="POST">
                 <input type="text" name="text" placeholder="text"> <br>
                 <select name="tag">
@@ -52,7 +63,6 @@
                 </select> <br>
                 <button type="submit">Submit</button>
             </form>
-
         </div>
     </div>
 </main>
