@@ -18,20 +18,17 @@ router.get("/interests/:user_id", (req, res) => {
     })
 })
 
-//Post route to handle interests form
-router.post("/:user_id", (req, res) => {
-    const userSelected = req.body
-    const selectedInterests = Object.values(userSelected)
-    User.findById(req.params.user_id, (err, foundUser) => {
+// Get route to show any channel selected by user
+router.get("/:user_id/:channel", (req, res) => {
+    Channel.findOne({name: req.params.channel})
+    .populate("post")
+    .exec(function(err, foundChannel) {
         if(err){
             console.log(err)
         } else {
-            foundUser.interests.push({name: selectedInterests})
-            foundUser.save()
-        
+           res.render("channels/channel", {currentChannel: foundChannel, date: dateTime})
         }
     })
-    res.redirect("/channel/" + req.params.user_id)
 })
 
 // Get route to index/main channel page
@@ -46,18 +43,29 @@ router.get("/:user_id", (req, res) => {
     
 })
 
-// Get route to show any channel selected by user
-router.get("/:user_id/:channel", (req, res) => {
-    Channel.findOne({name: req.params.channel})
-    .populate("post")
-    .exec(function(err, foundChannel) {
+
+//Post route to handle interests form
+router.post("/:user_id", (req, res) => {
+    const userSelected = req.body
+    const selectedInterests = Object.values(userSelected)
+    User.findById(req.params.user_id, (err, foundUser) => {
         if(err){
             console.log(err)
         } else {
-           res.render("channels/channel", {currentChannel: foundChannel, date: dateTime})
+            foundUser.interests.push({name: selectedInterests})
+            foundUser.save()
+            Channel.findOne({name: "Main"}, (err, mainChannel) =>{
+                if(err)console.log(err)
+                res.redirect("/channel/" + req.params.user_id + "/" + mainChannel)
+            })
         }
     })
+    
 })
+
+
+
+
 
 
 
