@@ -44,7 +44,6 @@ router.get("/:user_id", (req, res) => {
 })
 
 
-
 //Post route to handle interests form
 router.post("/:user_id", (req, res) => {
     const userSelected = req.body
@@ -55,10 +54,13 @@ router.post("/:user_id", (req, res) => {
         } else {
             foundUser.interests.push({name: selectedInterests})
             foundUser.save()
-        
+            Channel.findOne({name: "Main"}, (err, mainChannel) =>{
+                if(err)console.log(err)
+                res.redirect("/channel/" + req.params.user_id + "/" + mainChannel)
+            })
         }
     })
-    res.redirect("/channel/" + req.params.user_id)
+    
 })
 
 
