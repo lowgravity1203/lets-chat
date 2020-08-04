@@ -22,6 +22,13 @@
     </nav>
     <h1>This is the <%= currentChannel.name %> channel</h1>
 
+    <div>
+        <% currentChannel.tag.forEach(tag => { %>
+            <button><%= tag %></button>
+        <% }) %>
+    </div>
+    
+
     <ul>
         <% currentChannel.post.forEach(post => { %>
             <li>
@@ -29,9 +36,9 @@
                 Comment: <%= post.text %> <br>
                 Tag: <%= post.tag %> <br>
                 Date: <%= date %> <br>
-                <% if(currentUser && post.author.id.equals(currentUser.id)) { %>
-                    <button><a href="/channel/<%= currentUser.id %>/<%= currentChannel.name %>/<%= post.id %>/edit">Edit</a></button>
-                    <form action="/channel/<%= currentUser.id %>/<%= currentChannel.name %>/<%= post.id %>?_method=DELETE" method="POST">
+                <% if(currentUser && post.author.id === (currentUser.id)) { %>
+                    <button><a href="/channel/<%= currentUser.facebook_id %>/<%= currentChannel.name %>/<%= post.id %>/edit">Edit</a></button>
+                    <form action="/channel/<%= currentUser.facebook_id %>/<%= currentChannel.name %>/<%= post.id %>?_method=DELETE" method="POST">
                         <button type="submit">Delete</button>
                     </form>
                 <% } %> 
@@ -39,7 +46,7 @@
         <% }) %>
     </ul>
     
-    <form action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>" method="POST">
+    <form action="/channel/<%= currentUser.facebook_id %>/<%= currentChannel.name %>" method="POST">
         <input type="text" name="text" placeholder="text"> <br>
         <select name="tag">
             <% currentChannel.tag.forEach(tag => { %>
@@ -48,6 +55,6 @@
         </select> <br>
         <button type="submit">Submit</button>
     </form>
-    <a href="/channel/<%= currentUser._id %> ">Back to main channel</a>
+    <a href="/channel/<%= currentUser.facebook_id %> ">Back to main channel</a>
 </body>
 </html>
