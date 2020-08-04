@@ -1,1 +1,0 @@
-ATLAS_URI = mongodb+srv://dbUser:dbUser@cluster0.uqciv.mongodb.net/LetsChat?retryWrites=true&w=majority
