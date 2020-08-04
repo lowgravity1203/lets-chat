@@ -18,6 +18,19 @@ router.get("/interests/:user_id", (req, res) => {
     })
 })
 
+router.get("/:user_id/main", (req, res) => {
+    Channel.findOne({name: "Main"}, (err, mainChannel) => {
+        if(err){
+            console.log(err)
+        } else {
+            User.findById(req.params.user_id, (err, foundUser) => {
+                if(err)console.log(err)
+                res.render("channels/main", {user: foundUser})
+            })
+        }
+    })
+})
+
 // Get route to show any channel selected by user
 router.get("/:user_id/:channel", (req, res) => {
     Channel.findOne({name: req.params.channel})
@@ -56,7 +69,7 @@ router.post("/:user_id", (req, res) => {
             foundUser.save()
             Channel.findOne({name: "Main"}, (err, mainChannel) =>{
                 if(err)console.log(err)
-                res.redirect("/channel/" + req.params.user_id + "/" + mainChannel)
+                res.redirect("/channel/" + req.params.user_id + "/main" )
             })
         }
     })
