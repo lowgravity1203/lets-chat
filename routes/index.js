@@ -54,7 +54,7 @@ router.get('/auth/facebook/callback',
         // } else {
         //     res.redirect("/channel/" + req.user.facebook_id)
         // }
-        res.redirect("/channel/" + req.user.id)
+        res.redirect("/channel/interests/" + req.user.id)
     });
   
 function ensureAuthenticated(req, res, next) {
