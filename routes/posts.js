@@ -56,13 +56,20 @@ router.delete("/:channel/:post_id", (req, res) => {
 
 // Display edit page to edit a post
 router.get("/:channel/:post_id/edit", (req, res) => {
-    Post.findById(req.params.post_id, (err, foundPost) => {
+    Channel.findById(req.params.channel, (err,foudnChannel) => {
         if(err){
             console.log(err)
-        } else {
-            res.render("posts/edit", {post: foundPost, channel: req.params.channel})
+        }else {
+            Post.findById(req.params.post_id, (err, foundPost) => {
+                if(err){
+                    console.log(err)
+                } else {
+                    res.render("posts/edit", {post: foundPost, currentChannel: foundChannel})
+                }
+            })
         }
     })
+    
 })
 
 // Handle edit post logic
