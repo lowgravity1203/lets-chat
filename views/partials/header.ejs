@@ -5,14 +5,14 @@
         <div class="flex-item--logo">
           <a href="#"><i class="fad fa-comments-alt fa-2x"></i></a>
         </div>
-        <li><a href="/">Lets Chat</a></li>
+        <li><span><a href="/">Lets Chat</a></li></span>
       </div>
     </section>
     <section class="section--col-2">
       <div class="flex-ctn-2">
         <% if(!currentUser){ %>
-        <button class="header--btn"><a href="/login">Login</a></button>
-        <button class="header--btn"><a href="/register">Sign Up</a></button>
+        <div class="flex--item"><button class="header--btn"><a href="/login">Login</a></button></div>
+        <div class="flex--item"></div><button class="header--btn"><a href="/register">Sign Up</a></button>
         <% } else { %>
         <li>
           <a href="#">Signed in: <%= currentUser.username %></a>

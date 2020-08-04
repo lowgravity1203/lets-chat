@@ -31,7 +31,11 @@ header {
     margin-top: 1rem; }
   header .header--btn {
     border-radius: 0.5rem;
-    padding: 0.25rem 1rem; }
+    padding: 0.25rem 1rem;
+    background-color: #8c0874;
+    border-style: none; }
+    header .header--btn a {
+      color: #fff; }
   header .header--grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -43,14 +47,19 @@ header {
   header .flex-ctn-1 {
     display: flex;
     justify-content: start;
-    padding: 0.1rem; }
+    align-items: center;
+    margin-top: 0.1rem;
+    padding: 0.25rem 0.25rem 0.25rem 1rem; }
   header .section--col-2 {
     grid-area: col-2;
     list-style-type: none; }
   header .flex-ctn-2 {
     display: flex;
-    justify-content: space-around;
-    padding: 0.1rem; }
+    justify-content: end;
+    margin-top: 0.1rem;
+    padding: 0.25rem 1rem 0.25rem 0.25rem; }
+  header .flex--item {
+    padding-right: 0.5rem; }
   header .flex-item--logo {
     padding: 0 1rem 0.5rem 0; }
 

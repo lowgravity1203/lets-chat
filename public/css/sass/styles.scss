@@ -45,6 +45,12 @@ header {
   .header--btn {
     border-radius: 0.5rem;
     padding: 0.25rem 1rem;
+    background-color: $secondary-color;
+    border-style: none;
+
+    a {
+      color: $base-color;
+    }
   }
 
   .header--grid {
@@ -62,7 +68,9 @@ header {
   .flex-ctn-1 {
     display: flex;
     justify-content: start;
-    padding: 0.1rem;
+    align-items: center;
+    margin-top: 0.1rem;
+    padding: 0.25rem 0.25rem 0.25rem 1rem;
   }
 
   .section--col-2 {
@@ -72,8 +80,13 @@ header {
 
   .flex-ctn-2 {
     display: flex;
-    justify-content: space-around;
-    padding: 0.1rem;
+    justify-content: end;
+    margin-top: 0.1rem;
+    padding: 0.25rem 1rem 0.25rem 0.25rem;
+  }
+
+  .flex--item {
+    padding-right: 0.5rem;
   }
 
   .flex-item--logo {
