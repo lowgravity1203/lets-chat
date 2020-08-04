@@ -16,7 +16,10 @@ const cookieParser = require('cookie-parser')
 const FacebookStrategy = require('passport-facebook').Strategy
 
 
-
+// Channel.create({name: "Main"}, (err, channel)=>{
+//   if(err)console.log(err)
+//   console.log(channel)
+// })
 
 
 //database connection

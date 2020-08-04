@@ -14,7 +14,7 @@
                     <li><a href="/login">Login</a></li>
                     <li><a href="/register">Sign Up</a></li>
                 <% } else { %>
-                    <a href="#"><li>Signed is as <%= currentUser.username %></li></a>
+                    <a href="#"><li>Signed is as <%= currentUser.name %></li></a>
                     <li><a href="/logout">Logout</a></li>	
                 <% } %>
             </ul>
@@ -37,8 +37,8 @@
                 Tag: <%= post.tag %> <br>
                 Date: <%= date %> <br>
                 <% if(currentUser && post.author.id === (currentUser.id)) { %>
-                    <button><a href="/channel/<%= currentUser.facebook_id %>/<%= currentChannel.name %>/<%= post.id %>/edit">Edit</a></button>
-                    <form action="/channel/<%= currentUser.facebook_id %>/<%= currentChannel.name %>/<%= post.id %>?_method=DELETE" method="POST">
+                    <button><a href="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/edit">Edit</a></button>
+                    <form action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>?_method=DELETE" method="POST">
                         <button type="submit">Delete</button>
                     </form>
                 <% } %> 
@@ -46,7 +46,7 @@
         <% }) %>
     </ul>
     
-    <form action="/channel/<%= currentUser.facebook_id %>/<%= currentChannel.name %>" method="POST">
+    <form action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>" method="POST">
         <input type="text" name="text" placeholder="text"> <br>
         <select name="tag">
             <% currentChannel.tag.forEach(tag => { %>
@@ -55,6 +55,6 @@
         </select> <br>
         <button type="submit">Submit</button>
     </form>
-    <a href="/channel/<%= currentUser.facebook_id %> ">Back to main channel</a>
+    <a href="/channel/<%= currentUser._id %> ">Back to main channel</a>
 </body>
 </html>
