@@ -26,7 +26,7 @@
     </nav>
     <h1>This is the edit post page</h1>
 
-    <form action="/channel/<%= currentUser.id %>/<%= currentChannel.name %>/<%= post.id %>/edit?_method=PUT" method="POST">
+    <form action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/edit?_method=PUT" method="POST">
         Text: <input type="text" name="text" value="<%= post.text %>"><br>
         <select name="tag">
             <% currentChannel.tag.forEach(tag => { %>
