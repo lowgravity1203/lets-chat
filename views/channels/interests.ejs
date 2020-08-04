@@ -1,19 +1,22 @@
-<main class="interests__main main--grid">
+<main class="main--grid">
   <section class="channel__interests--section">
-    <h1 class="interests--h1">Please select your top 3 interests</h1>
-    <form action="/channel/<%= currentUser._id %> " method="POST">
+    <h1>#channel_interests</h1>
+
+    <h1><span style="color:red">Todo:</span>Add data to mongo</h1>
+
+    <form action="/channel/<%= currentUser.facebook_id %> " method="POST">
       <% interests.forEach(interest => { %>
-        <label 
-        ><input class="checkbox"
-        type="checkbox"
-        id="<%= interest.name %>"
-        name="<%= interest.name %>"
-        value="<%= interest.name %>"
-        /><span class="interests--span"><%= interest.name %></span>
-      </label>
+      <label
+        ><input
+          type="checkbox"
+          id="<%= interest.name %>"
+          name="<%= interest.name %>"
+          value="<%= interest.name %>"
+        /><%= interest.name %></label
+      >
       <br />
       <% }) %>
-      <button class="button" id="interests--btn" type="submit">Submit</button>
+      <button type="submit">Submit</button>
     </form>
   </section>
 </main>

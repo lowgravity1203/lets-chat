@@ -17,7 +17,7 @@
                 <li><a href="/register">Sign Up</a></li>
                 <% } else { %>
                 <a href="#">
-                    <li>Signed is as <%= currentUser.username %></li>
+                    <li>Signed is as <%= currentUser.name %></li>
                 </a>
                 <li><a href="/logout">Logout</a></li>
                 <% } %>
@@ -26,9 +26,19 @@
     </nav>
     <h1>This is the edit post page</h1>
 
-    <form action="/channel/<%= currentUser.id %>/<%= channel %>/<%= post.id %>/edit?_method=PUT" method="POST">
+    <form action="/channel/<%= currentUser.facebook_id %>/<%= currentChannel.name %>/<%= post.id %>/edit?_method=PUT" method="POST">
         Text: <input type="text" name="text" value="<%= post.text %>"><br>
-        Tag: <input type="text" name="tag" value="<%= post.tag %>"><br>
+        <select name="tag">
+            <% currentChannel.tag.forEach(tag => { %>
+                    <option value="<%= tag %>" 
+                        <% if(tag === post.tag){ %>
+                            selected
+                        <% } %> 
+                    >
+                        <%= tag %>
+                    </option>
+            <% }) %>
+        </select> <br>
         <button type="Submit">Submit </button>
     </form>
 

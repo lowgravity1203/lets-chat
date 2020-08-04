@@ -3,9 +3,9 @@
     <h1>#channel_index</h1>
     <ul>
       <% user.interests.forEach(interest => { %>
-      <% interest.name.forEach(item => { %>     
-      <li class="index--ctn-items">
-        <a class="index--items" href="/channel/<%= currentUser.id %>/<%= item %>"><%= item %></a>
+      <% interest.name.forEach(item => { %>
+      <li>
+        <a href="/channel/<%= currentUser.facebook_id %>/<%= item %>"><%= item %></a>
       </li>
             <% }) %>
       <% }) %>

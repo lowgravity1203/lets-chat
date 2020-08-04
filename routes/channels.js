@@ -5,7 +5,10 @@ const Interests = require("../models/interest")
 const Channel = require("../models/channel")
 const Post = require("../models/post")
 
-
+var today = new Date();
+var date = (today.getMonth()+1)+'-'+today.getDate()+'-'+today.getFullYear();
+var time = today.getHours() + ":" + today.getMinutes()
+var dateTime = date+' '+time;
 
 // Get route to interests page
 router.get("/interests/:user_id", (req, res) => {
@@ -19,7 +22,7 @@ router.get("/interests/:user_id", (req, res) => {
 router.post("/:user_id", (req, res) => {
     const userSelected = req.body
     const selectedInterests = Object.values(userSelected)
-    User.findById(req.params.user_id, (err, foundUser) => {
+    User.findOne({facebook_id: req.params.user_id}, (err, foundUser) => {
         if(err){
             console.log(err)
         } else {
@@ -27,12 +30,12 @@ router.post("/:user_id", (req, res) => {
             foundUser.save()
         }
     })
-    res.redirect("/channel/" + req.user.id)
+    res.redirect("/channel/" + req.user.facebook_id)
 })
 
 // Get route to index/main channel page
 router.get("/:user_id", (req, res) => {
-    User.findById(req.params.user_id, (err, foundUser) => {
+    User.findOne({facebook_id: req.params.user_id}, (err, foundUser) => {
         if(err){
             console.log(err)
         } else {
@@ -44,11 +47,13 @@ router.get("/:user_id", (req, res) => {
 
 // Get route to show any channel selected by user
 router.get("/:user_id/:channel", (req, res) => {
-    Channel.findOne({name: req.params.channel}).populate("post").exec(function(err, foundChannel) {
+    Channel.findOne({name: req.params.channel})
+    .populate("post")
+    .exec(function(err, foundChannel) {
         if(err){
             console.log(err)
         } else {
-           res.render("channels/" + req.params.channel, {currentChannel: foundChannel})
+           res.render("channels/channel", {currentChannel: foundChannel, date: dateTime})
         }
     })
 })

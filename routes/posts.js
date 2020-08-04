@@ -17,16 +17,18 @@ router.post("/:channel", (req, res) => {
                     console.log(err)
                 } else {
                     post.author.id = req.user.id
-                    post.author.username = req.user.username
+                    post.author.name = req.user.name
                     post.save()
                     channel.post.push(post)
                     channel.save()
-                    res.redirect("/channel/" + req.user.id + "/" + req.params.channel)
+                    res.redirect("/channel/" + req.user.facebook_id + "/" + req.params.channel)
                 }
             })
         }
     }) 
 })
+
+
 
 // Handling delete post logic
 router.delete("/:channel/:post_id", (req, res) => {
@@ -43,7 +45,7 @@ router.delete("/:channel/:post_id", (req, res) => {
                         if(err){
                             console.log(err)
                         } else {
-                            res.redirect("/channel/" + req.user.id + "/" + req.params.channel)
+                            res.redirect("/channel/" + req.user.facebook_id + "/" + req.params.channel)
                         }
                     })
                 }
@@ -54,13 +56,20 @@ router.delete("/:channel/:post_id", (req, res) => {
 
 // Display edit page to edit a post
 router.get("/:channel/:post_id/edit", (req, res) => {
-    Post.findById(req.params.post_id, (err, foundPost) => {
+    Channel.findOne({name: req.params.channel}, (err,foundChannel) => {
         if(err){
             console.log(err)
-        } else {
-            res.render("posts/edit", {post: foundPost, channel: req.params.channel})
+        }else {
+            Post.findById(req.params.post_id, (err, foundPost) => {
+                if(err){
+                    console.log(err)
+                } else {
+                    res.render("posts/edit", {post: foundPost, currentChannel: foundChannel})
+                }
+            })
         }
     })
+    
 })
 
 // Handle edit post logic
@@ -83,7 +92,7 @@ router.put("/:channel/:post_id/edit", (req, res) => {
                                 if(err){
                                     console.log(err)
                                 } else {
-                                    res.redirect("/channel/" + req.user.id + "/" + req.params.channel)
+                                    res.redirect("/channel/" + req.user.facebook_id + "/" + req.params.channel)
                                 }
                             })
                         }
