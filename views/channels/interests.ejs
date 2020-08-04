@@ -4,7 +4,7 @@
 
     <h1><span style="color:red">Todo:</span>Add data to mongo</h1>
 
-    <form action="/channel/<%= currentUser._id %> " method="POST">
+    <form action="/channel/<%= currentUser.facebook_id %> " method="POST">
       <% interests.forEach(interest => { %>
       <label
         ><input
