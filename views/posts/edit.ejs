@@ -30,7 +30,13 @@
         Text: <input type="text" name="text" value="<%= post.text %>"><br>
         <select name="tag">
             <% currentChannel.tag.forEach(tag => { %>
-                    <option value="<%= tag %>"><%= tag %></option>
+                    <option value="<%= tag %>" 
+                        <% if(tag === post.tag){ %>
+                            selected
+                        <% } %> 
+                    >
+                        <%= tag %>
+                    </option>
             <% }) %>
         </select> <br>
         <button type="Submit">Submit </button>

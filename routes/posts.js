@@ -56,7 +56,7 @@ router.delete("/:channel/:post_id", (req, res) => {
 
 // Display edit page to edit a post
 router.get("/:channel/:post_id/edit", (req, res) => {
-    Channel.findById(req.params.channel, (err,foudnChannel) => {
+    Channel.findById(req.params.channel, (err,foundChannel) => {
         if(err){
             console.log(err)
         }else {
@@ -78,7 +78,7 @@ router.put("/:channel/:post_id/edit", (req, res) => {
         if(err){
             console.log(err)
         } else {
-            Channel.findOne({name: req.params.channel}, (err, foundChannel) => {
+            Channel.findById(req.params.channel, (err, foundChannel) => {
                 if(err){
                     console.log(err)
                 } else {
@@ -92,7 +92,7 @@ router.put("/:channel/:post_id/edit", (req, res) => {
                                 if(err){
                                     console.log(err)
                                 } else {
-                                    res.redirect("/channel/" + req.user.id + "/" + req.params.channel)
+                                    res.redirect("/channel/" + req.user.id + "/" + foundChannel.name)
                                 }
                             })
                         }

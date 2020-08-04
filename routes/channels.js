@@ -53,7 +53,6 @@ router.get("/:user_id/:channel", (req, res) => {
         if(err){
             console.log(err)
         } else {
-            console.log("yoo")
            res.render("channels/channel", {currentChannel: foundChannel, date: dateTime})
         }
     })

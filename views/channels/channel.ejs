@@ -30,7 +30,7 @@
                 Tag: <%= post.tag %> <br>
                 Date: <%= date %> <br>
                 <% if(currentUser && post.author.id.equals(currentUser.id)) { %>
-                    <button><a href="/channel/<%= currentUser.id %>/<%= currentChannel.name %>/<%= post.id %>/edit">Edit</a></button>
+                    <button><a href="/channel/<%= currentUser.id %>/<%= currentChannel.id %>/<%= post.id %>/edit">Edit</a></button>
                     <form action="/channel/<%= currentUser.id %>/<%= currentChannel.name %>/<%= post.id %>?_method=DELETE" method="POST">
                         <button type="submit">Delete</button>
                     </form>
