@@ -52,7 +52,7 @@ router.get('/auth/facebook/callback',
         if(req.user.interests.length === 0){
             res.redirect("/channel/interests/" + req.user.id)
         } else {
-            res.redirect("/channel/" + req.user.id)
+            res.redirect("/channel/" + req.user.id + "/main") 
         }
         
     });
