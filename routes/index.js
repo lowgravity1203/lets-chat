@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
 //Handle local login logic
 router.post("/login", passport.authenticate("local"),
    function(req, res){
-        res.redirect("/channel/" + req.user.id)
+        res.redirect("/channel/" + req.user.id + "/main")
 })
 
 //Get register page

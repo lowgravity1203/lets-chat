@@ -16,12 +16,13 @@ router.post("/:channel", (req, res) => {
                 if(err){
                     console.log(err)
                 } else {
-                    post.author.id = req.user.id
-                    post.author.name = req.user.name
+                    post.author.id = req.user._id
+                    post.author.username = req.user.username
                     post.save()
                     channel.post.push(post)
                     channel.save()
-                    res.redirect("/channel/" + req.user.id + "/" + req.params.channel)
+                    console.log(req.user._id)
+                    res.redirect("/channel/" + req.user._id + "/" + req.params.channel)
                 }
             })
         }
