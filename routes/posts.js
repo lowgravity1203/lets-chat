@@ -21,7 +21,7 @@ router.post("/:channel", (req, res) => {
                     post.save()
                     channel.post.push(post)
                     channel.save()
-                    res.redirect("/channel/" + req.user.facebook_id + "/" + req.params.channel)
+                    res.redirect("/channel/" + req.user.id + "/" + req.params.channel)
                 }
             })
         }
@@ -45,7 +45,7 @@ router.delete("/:channel/:post_id", (req, res) => {
                         if(err){
                             console.log(err)
                         } else {
-                            res.redirect("/channel/" + req.user.facebook_id + "/" + req.params.channel)
+                            res.redirect("/channel/" + req.user.id + "/" + req.params.channel)
                         }
                     })
                 }
@@ -92,7 +92,7 @@ router.put("/:channel/:post_id/edit", (req, res) => {
                                 if(err){
                                     console.log(err)
                                 } else {
-                                    res.redirect("/channel/" + req.user.facebook_id + "/" + req.params.channel)
+                                    res.redirect("/channel/" + req.user.id + "/" + req.params.channel)
                                 }
                             })
                         }
