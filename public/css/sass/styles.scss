@@ -34,6 +34,17 @@ header {
 
   a {
     font-size: 1.5rem;
+    color: $primary-color;
+  }
+
+  li span a {
+    color: $secondary-color;
+    margin-top: 1rem;
+  }
+
+  .header--btn {
+    border-radius: 0.5rem;
+    padding: 0.25rem 1rem;
   }
 
   .header--grid {
@@ -43,23 +54,23 @@ header {
     height: 7vh;
   }
 
-  .header--col-1 {
+  .section--col-1 {
     grid-area: col-1;
     list-style-type: none;
   }
 
-  .header--flex-ctn-1 {
+  .flex-ctn-1 {
     display: flex;
     justify-content: start;
     padding: 0.1rem;
   }
 
-  .header--col-2 {
+  .section--col-2 {
     grid-area: col-2;
     list-style-type: none;
   }
 
-  .header--flex-ctn-2 {
+  .flex-ctn-2 {
     display: flex;
     justify-content: space-around;
     padding: 0.1rem;
@@ -159,11 +170,12 @@ a {
   justify-content: center;
   align-items: center;
 
-  .channel__landing--section li {
+  li {
     list-style-type: none;
     font-size: 2rem;
   }
-  .channel__landing--section li > a {
+
+  li > a {
     list-style-type: none;
     font-size: 2.5rem;
   }
@@ -183,25 +195,28 @@ a {
   grid-template-areas: "box1" "box2" "box3" "box4";
   grid-row-gap: 1rem;
 
-  .index__register--section .register--section-1 {
+  .register--section-1 {
     grid-area: box1;
     display: flex;
     justify-content: center;
     margin-top: 7.5rem;
   }
-  .index__register--section .register--section-2 {
+
+  .register--section-2 {
     grid-area: box2;
     display: flex;
     justify-content: center;
     margin-top: 10rem;
   }
-  .index__register--section .register--section-3 {
+
+  .register--section-3 {
     grid-area: box3;
     display: flex;
     justify-content: center;
     margin-top: -1rem;
   }
-  .index__register--section .register--section-4 {
+
+  .register--section-4 {
     grid-area: box4;
     display: flex;
     justify-content: center;
