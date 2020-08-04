@@ -22,6 +22,13 @@
     </nav>
     <h1>This is the <%= currentChannel.name %> channel</h1>
 
+    <div>
+        <% currentChannel.tag.forEach(tag => { %>
+            <button><%= tag %></button>
+        <% }) %>
+    </div>
+    
+
     <ul>
         <% currentChannel.post.forEach(post => { %>
             <li>
