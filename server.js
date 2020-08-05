@@ -52,7 +52,13 @@ passport.serializeUser(function(user, done){
   done(null, user)
 })
 passport.deserializeUser(function(obj, done){
-  done(null, obj)
+  User.findById(obj._id, (err, foundUser) => {
+    if (err) {
+      console.log(err)
+    } else {
+      done(null, foundUser.toObject())
+    }
+  });
 })
 
 //Facebook Login
