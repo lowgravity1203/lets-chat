@@ -14,6 +14,9 @@ const mongoose = require("mongoose")
 const config = require("./configuration/config")
 const cookieParser = require('cookie-parser')
 const FacebookStrategy = require('passport-facebook').Strategy
+const google = require('googleapis');
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
 
 // data = ["bit manipulation", "logic puzzles", "OO design", "recursion", "sorting", "searching"]
 
@@ -45,8 +48,7 @@ const channelRoutes = require('./routes/channels')
 const postRoutes = require('./routes/posts')
 
 
-// Require database info from file
-// require('./db/db')
+
 
 // Use static file for css, urlencoded for req.body, and methodOverride
 app.use(express.static(__dirname + '/public'))
@@ -82,7 +84,19 @@ passport.deserializeUser(function(obj, done){
   })
 })
 
-//Facebook Login
+// //Google Auth
+// passport.use(new GoogleStrategy({
+//   clientID: config.google_client_id,
+//   clientSecret: config.google_client_secret,
+//   callbackURL: "http://localhost:3000/auth/google/callback"
+// },
+// function(accessToken, refreshToken, profile, done) {
+//     userProfile=profile;
+//     return done(null, userProfile);
+// }
+// ));
+
+//Facebook Auth
 passport.use(new FacebookStrategy({ //This is class constructor argument telling Passport to create a new Facebook Auth Strategy
   clientID: config.facebook_api_key,//The App ID generated when app was created on https://developers.facebook.com/
   clientSecret: config.facebook_api_secret,//The App Secret generated when app was created on https://developers.facebook.com/

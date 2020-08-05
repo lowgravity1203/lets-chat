@@ -67,6 +67,19 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/login')
 }
 
+//////////////////////////////////////////GOOGLE LOGIC////////////////////////////////
+
+// router.get('/auth/google', 
+//   passport.authenticate('google', { scope : ['profile', 'email'] }));
+ 
+// router.get('/auth/google/callback', 
+//   passport.authenticate('google', { failureRedirect: '/error' }),
+//   function(req, res) {
+//     // Successful authentication, redirect success.
+//     res.redirect('/success');
+//   });
+
+
 //Logout route
 router.get('/logout', (req, res) => {
   req.logout()
