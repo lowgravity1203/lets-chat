@@ -1,4 +1,5 @@
 const express = require('express')
+const PORT = process.env.PORT || 3000;
 const app = express()
 const methodOverride = require('method-override')
 const bodyParser = require('body-parser')
@@ -145,7 +146,7 @@ app.use('/channel', channelRoutes)
 app.use('/channel/:user_id', postRoutes)
 
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log('app is listening on port 3000')
 })
 
