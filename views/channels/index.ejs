@@ -1,18 +1,13 @@
 <main class="main--grid">
   <section class="channel__index--section">
-    <h1>#channel_index</h1>
+    <h1>Dashboard</h1>
     <ul>
-      <% user.interests.forEach(interest => { %>
-      <% interest.name.forEach(item => { %>
+      <% user.interests.forEach(interest => { %> <% interest.name.forEach(item
+      => { %>
       <li>
         <a href="/channel/<%= currentUser._id %>/<%= item %>"><%= item %></a>
       </li>
-            <% }) %>
-      <% }) %>
+      <% }) %> <% }) %>
     </ul>
   </section>
 </main>
-
-
-
-

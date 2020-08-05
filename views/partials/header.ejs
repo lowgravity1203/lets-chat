@@ -1,25 +1,48 @@
 <header>
   <nav class="header--grid">
-    <section class="section--col-1">
+    <section class="section__col-1">
       <div class="flex-ctn-1">
         <div class="flex-item--logo">
-          <a href="#"><i class="fad fa-comments-alt fa-2x"></i></a>
+          <a href="#"><i class="fad fa-comments-alt fa-5x"></i></a>
         </div>
         <li><span><a href="/">Lets Chat</a></li></span>
       </div>
     </section>
-    <section class="section--col-2">
+    <section class="section__col-2">
+      
       <div class="flex-ctn-2">
+
         <% if(!currentUser){ %>
-        <div class="flex--item"><button class="header--btn"><a href="/">Login</a></button></div>
-        <div class="flex--item"></div><button class="header--btn"><a href="/register">Sign Up</a></button>
+
+        <div class="flex--item">   
+          <button class="header--btn">
+            <a href="/">Login</a>
+          </button>
+        </div>
+
+        <div class="flex--item">
+          <button class="header--btn">
+            <a href="/register">Sign Up</a>
+          </button>
+        </div>
+         
         <% } else { %>
+        
+        <button class="header--btn main--btn">
+          <a href="/channel/<%= currentUser._id %>/main ">#main</a>
+        </button>
+
         <li class="user--active">
           <a href="#">Signed in: <%= currentUser.username %></a>
         </li>
-        <button class="header--btn"><a href="/logout">Logout</a></button>
+
+        <button class="header--btn">
+          <a href="/logout">Logout</a>
+        </button>
         <% } %>
+
       </div>
+
     </section>
   </nav>
 </header>

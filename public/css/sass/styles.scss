@@ -20,12 +20,10 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-main {
-  .main--grid {
-    height: 80vh;
-    border-radius: 0.5rem;
-    margin: 0.25rem;
-  }
+.main--grid {
+  height: 80vh;
+  border-radius: 0.5rem;
+  margin: 0.25rem;
 
   .channel--grid {
     display: grid;
@@ -37,10 +35,10 @@ main {
     color: #444;
 
     grid-template-areas:
-      "box1 box1 box1 box1 box1"
-      "box3 box4 box4 box4 box2"
-      "box3 box4 box4 box4 box2"
-      "box3 box5 box5 box5 box2";
+      'box1 box1 box1 box1 box1'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box5 box5 box5 box2';
 
     // grid-template-areas:
     //   "box1 box1 box1 box1 box1"
@@ -82,73 +80,73 @@ header {
   height: 10vh;
   margin: 0.25rem;
 
-  a {
-    font-size: 1.5rem;
-    color: $primary-color;
-  }
-
-  li span a {
-    color: $secondary-color;
-    margin-top: 1rem;
-  }
-
-  .header--btn {
-    border-radius: 0.5rem;
-    padding: 0.25rem 1rem;
-    background-color: $secondary-color;
-    border-style: none;
-
-    a {
-      color: $base-color;
-    }
-  }
-
   .header--grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "col-1 col-2";
+    grid-template-areas: 'box1 box2';
     height: 7vh;
-  }
 
-  .section--col-1 {
-    grid-area: col-1;
-    list-style-type: none;
-  }
+    .section__col-1 {
+      grid-area: box1;
+      list-style-type: none;
 
-  .flex-ctn-1 {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    margin-top: 0.1rem;
-    padding: 0.25rem 0.25rem 0.25rem 1rem;
-  }
+      .flex-ctn-1 {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 0.1rem;
 
-  .section--col-2 {
-    grid-area: col-2;
-    list-style-type: none;
-  }
+        padding: 0.25rem 0.25rem 0.25rem 1rem;
 
-  .flex-ctn-2 {
-    display: flex;
-    justify-content: end;
-    margin-top: 0.1rem;
-    padding: 0.25rem 1rem 0.25rem 0.25rem;
-  }
+        .flex-item--logo a {
+          padding: 0 1rem 0.5rem 0;
+          color: $primary-color;
+        }
 
-  .flex--item {
-    padding-right: 0.5rem;
-  }
+        li span a {
+          color: $secondary-color;
+          margin-top: 1rem;
+          font-size: 1.5rem;
+        }
+      }
+    }
 
-  .flex-item--logo {
-    padding: 0 1rem 0.5rem 0;
-  }
+    .section__col-2 {
+      grid-area: box2;
+      list-style-type: none;
 
-  .user--active {
-    padding-right: 1.5rem;
+      .flex-ctn-2 {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 0.1rem;
+        padding: 0.25rem 1rem 0.25rem 0.25rem;
+
+        .flex--item {
+          display: flex;
+          padding-right: 0.5rem;
+        }
+        .user--active {
+          padding-right: 1.5rem;
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .header--btn {
+      border-radius: 0.5rem;
+      padding: 0.25rem 1rem;
+      background-color: $secondary-color;
+      border-style: none;
+
+      a {
+        color: $base-color;
+        font-size: 1.5rem;
+      }
+    }
   }
 }
 
-footer {
+.footer {
   background-color: $primary-color;
   border-radius: 0.5rem;
   margin: 0.25rem;
@@ -161,10 +159,9 @@ footer {
   .footer--grid {
     font-size: 1rem;
     display: grid;
-    height: 10vh;
     overflow-y: scroll;
     grid-template-columns: 2fr 2fr 0.5fr;
-    grid-template-areas: "column-2 column-1 column-3";
+    grid-template-areas: 'column-2 column-1 column-3';
   }
 
   .footer--col-1 {
@@ -276,7 +273,7 @@ footer {
 .index__register--section {
   display: grid;
   grid-template-rows: 1fr 1fr;
-  grid-template-areas: "box1" "box2" "box3" "box4";
+  grid-template-areas: 'box1' 'box2' 'box3' 'box4';
   grid-row-gap: 1rem;
 
   .register--section-1 {
