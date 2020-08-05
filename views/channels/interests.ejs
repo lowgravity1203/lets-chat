@@ -2,9 +2,11 @@
   <section class="channel__interests--section">
     <h1>#channel_interests</h1>
 
-    <h1><span style="color:red">Todo:</span>Add data to mongo</h1>
-
-    <form action="/channel/<%= currentUser.facebook_id %> " method="POST">
+    <form
+      action="/channel/<%= currentUser._id %>"
+      id="interest_form"
+      method="POST"
+    >
       <% interests.forEach(interest => { %>
       <label
         ><input

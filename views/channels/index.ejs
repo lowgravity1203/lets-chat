@@ -5,7 +5,7 @@
       <% user.interests.forEach(interest => { %>
       <% interest.name.forEach(item => { %>
       <li>
-        <a href="/channel/<%= currentUser.facebook_id %>/<%= item %>"><%= item %></a>
+        <a href="/channel/<%= currentUser._id %>/<%= item %>"><%= item %></a>
       </li>
             <% }) %>
       <% }) %>

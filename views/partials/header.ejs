@@ -1,26 +1,37 @@
 <header>
-  <nav class="header--grid">
-    <section class="section--col-1">
-      <div class="flex-ctn-1">
-        <div class="flex-item--logo">
-          <a href="#"><i class="fad fa-comments-alt fa-2x"></i></a>
-        </div>
-        <li><span><a href="/">Lets Chat</a></li></span>
-      </div>
-    </section>
-    <section class="section--col-2">
-      <div class="flex-ctn-2">
-        <% if(!currentUser){ %>
-        <div class="flex--item"><button class="header--btn"><a href="/login">Login</a></button></div>
-        <div class="flex--item"></div><button class="header--btn"><a href="/register">Sign Up</a></button>
-        <% } else { %>
-        <li class="user--active">
-          <a href="#">Signed in: <%= currentUser.username %></a>
+  <nav>
+      <ul>
+        <li>
+          <a href="/">
+            <i class="fad fa-comments-alt fa-5x"></i>
+          </a>
         </li>
-        <button class="header--btn"><a href="/logout">Logout</a></button>
-        <% } %>
+        <li class="flex--item">Lets Chat</a></li>
+      </ul>
+    <div class="user">
+      <div>
+        <% if(!currentUser){ %>
+        <div class="btn--ctn">
+          <button class="btn">
+            <a href="/">Login</a>
+          </button>
+        </div>  
+        <div class="btn--ctn">
+          <button class="btn">
+            <a href="/register">Sign Up</a>
+          </button>
+        </div>    
+        <% } else { %>
+        <div>
+          <li class="user--active">
+            <a href="#"><%= currentUser.username %></a>
+          </li>
+          <button class="btn">
+            <a href="/logout">Logout</a>
+          </button>          
+          <% } %>
+        </div>    
       </div>
-    </section>
   </nav>
 </header>
 
