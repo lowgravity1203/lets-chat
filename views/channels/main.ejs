@@ -3,7 +3,7 @@
 
     <div class="channel--grid">
         <div class="boxes box1">Header
-
+                <h1>Main Channel</h1>
         </div>
 
         <!-- Posts sorted by tag will display here -->
@@ -39,6 +39,7 @@
                                 <button type="submit">Delete</button>
                             </form>
                         <% } %> 
+                        <button><a href="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/reply">Reply</a></button>
                     </li>
                 <% }) %>
             </ul>

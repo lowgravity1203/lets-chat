@@ -104,4 +104,15 @@ router.put("/:channel/:post_id/edit", (req, res) => {
 })
 
 
+// Display form to reply to post
+router.get("/:channel/:post_id/reply", (req, res) => {
+        Channel.findOne({name: req.params.channel}, (err, foundChannel)=> {
+                if(err)console.log(err)
+                Post.findById(req.params.post_id, (err, foundPost)=> {
+                        if(err)console.log(err)
+                        res.render("posts/reply", {currentChannel: foundChannel, post: foundPost})
+                })
+        })
+})
+
 module.exports = router

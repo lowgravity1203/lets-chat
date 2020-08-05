@@ -3,7 +3,7 @@
 
     <div class="channel--grid">
         <div class="boxes box1">Header
-
+                <h1><%= currentChannel.name %> Channel</h1>
         </div>
 
         <!-- Posts sorted by tag will display here -->
@@ -17,9 +17,11 @@
                 <a href="/channel/<%= currentUser._id %>/main" >Main</a>
                 <% currentUser.interests.forEach(interest => { %>
                     <% interest.name.forEach(item => { %>
-                        <li>
-                            <a href="/channel/<%= currentUser._id %>/<%= item %>"><%= item %></a>
-                        </li>
+                        <% if(currentChannel.name !== item){ %>
+                            <li>
+                                <a href="/channel/<%= currentUser._id %>/<%= item %>"><%= item %></a>
+                            </li>
+                        <% } %> 
                     <% }) %>
                 <% }) %>
             </ul>
@@ -40,6 +42,7 @@
                                 <button type="submit">Delete</button>
                             </form>
                         <% } %> 
+                        <button><a href="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/reply">Reply</a></button>
                     </li>
                 <% }) %>
             </ul>

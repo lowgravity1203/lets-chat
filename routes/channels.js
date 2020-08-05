@@ -7,10 +7,10 @@ const Post = require('../models/post')
 
 
 var today = new Date()
-var date =
-  today.getMonth() + 1 + '-' + today.getDate() + '-' + today.getFullYear()
+var date = today.getMonth() + 1 + '-' + today.getDate() + '-' + today.getFullYear()
 var time = today.getHours() + ':' + today.getMinutes()
 var dateTime = date + ' ' + time
+
 
 // Get route to interests page
 router.get('/interests/:user_id', (req, res) => {
@@ -19,7 +19,6 @@ router.get('/interests/:user_id', (req, res) => {
     res.render('channels/interests', { interests: allInterests })
   })
 })
-
 
 
 //Get route to the main channel page
@@ -79,12 +78,9 @@ router.post('/:user_id', (req, res) => {
     } else {
       foundUser.interests.push({ name: selectedInterests })
       foundUser.save()
-      console.log(req.user)
       res.redirect("/channel/" + req.params.user_id + "/main")
     }
-    
   })
-  
 })
 
 
