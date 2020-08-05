@@ -1,5 +1,5 @@
 <main class="main--grid">
-  <div class="home--section">
+  <div class="index--home">
     <% if (!user) { %>
 
     <div>
@@ -14,12 +14,12 @@
     </div>
     <section class="account">
       <div class="email">
-        <form action="/login" method="POST">
+        <form action="/register" method="POST">
           <input type="text" name="username" placeholder="Enter email" />
           <br />
           <input type="password" name="password" placeholder="Password" />
           <br />
-          <button class="btn" type="submit">Sign Up</button>
+          <button id="signup" class="btn" type="submit">Sign Up</button>
         </form>
       </div>
       <br />
@@ -30,7 +30,7 @@
     </section>
 
     <% } else { %>
-    <h3>Hello, <%= user.displayName %>.</h3>
+    <h1>Hello <%= user.displayName %></h1>
     <% } %>
   </div>
 </main>

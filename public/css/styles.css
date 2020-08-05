@@ -170,40 +170,54 @@ footer nav {
     list-style-type: none;
     font-size: 2.5rem; }
 
-.home--section {
+.index--home {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 10rem; }
-  .home--section .home--title {
+  .index--home .home--title {
     font-size: 2rem; }
-    .home--section .home--title span {
+    .index--home .home--title span {
       color: #00879a; }
-    .home--section .home--title h2 {
+    .index--home .home--title h2 {
       margin-top: 10rem; }
-  .home--section .home--subtitle {
+  .index--home .home--subtitle {
     margin-top: 18rem; }
-  .home--section .account .btn {
+  .index--home .account .btn {
     margin: 1rem 0 0 3.5rem;
     padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
     background-color: #8c0874;
     border-style: none;
     color: #fff; }
-  .home--section .account .email {
+  .index--home .account .email {
     margin-top: 2rem; }
-  .home--section .account .fb {
+  .index--home .account .fb {
     margin-top: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center; }
-    .home--section .account .fb h3 {
+    .index--home .account .fb h3 {
       font-size: 1rem; }
-    .home--section .account .fb a {
+    .index--home .account .fb a {
       font-size: 1rem;
       padding-left: 0.25rem;
       color: blue; }
+
+.index--register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem; }
+  .index--register .btn {
+    margin: 1rem 0 0 3.5rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    background-color: #8c0874;
+    border-style: none;
+    color: #fff; }
 
 .index__profile--section {
   display: flex; }
