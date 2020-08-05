@@ -1,14 +1,15 @@
 <main class="main--grid">
   <section class="channel__interests--section">
-    <h1>#channel_interests</h1>
+    <h1 id="hi">#channel_interests</h1>
 
     <h1><span style="color:red">Todo:</span>Add data to mongo</h1>
 
-    <form action="/channel/<%= currentUser._id %> " method="POST">
+    <form action="/channel/<%= currentUser._id %>" id="interest_form" method="POST">
       <% interests.forEach(interest => { %>
       <label
         ><input
           type="checkbox"
+          class="cb"
           id="<%= interest.name %>"
           name="<%= interest.name %>"
           value="<%= interest.name %>"
@@ -19,4 +20,7 @@
       <button type="submit">Submit</button>
     </form>
   </section>
+  <script type="text/javascript" scr="scripts/script.js"></script>
 </main>
+
+

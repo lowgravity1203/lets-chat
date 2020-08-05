@@ -4,25 +4,22 @@ const passport = require('passport')
 const User = require('../models/user')
 
 
-
-
 //Get home page
 router.get("/", (req, res) => {
     res.render("index/home", {user: req.user})
 })
 
 //Handle local login logic
-
 router.post("/login", passport.authenticate("local"),
    function(req, res){
         res.redirect("/channel/" + req.user.id + "/main")
-
 })
 
 //Get register page
 router.get('/register', (req, res) => {
   res.render('index/register')
 })
+
 
 //Handle register logic
 router.post('/register', (req, res) => {
@@ -38,14 +35,20 @@ router.post('/register', (req, res) => {
   })
 })
 
+
+
+
+
+
 ////////////////////////////////////////FACEBOOK AUTH///////////////////////////////////
 
-router.get('/account', ensureAuthenticated, function(req, res){
-    res.render('account', { user: req.user });
-  });
+// router.get('/channel/interests', ensureAuthenticated, function(req, res){
+//     res.render('channels/interests/', { user: req.user });
+//   });
   
 router.get('/auth/facebook', passport.authenticate('facebook',{scope:'email'}));
-  
+
+
   
 router.get('/auth/facebook/callback',
     passport.authenticate('facebook'),
@@ -54,8 +57,7 @@ router.get('/auth/facebook/callback',
             res.redirect("/channel/interests/" + req.user.id)
         } else {
             res.redirect("/channel/" + req.user.id + "/main") 
-        }
-        
+        } 
     });
   
 function ensureAuthenticated(req, res, next) {

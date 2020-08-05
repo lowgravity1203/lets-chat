@@ -10,7 +10,16 @@ const postSchema = new mongoose.Schema({
             ref: 'User'
         },
         username: String
-    }
+    },
+    replies: [{
+            author: {
+                    id: {
+                        type: mongoose.Schema.Types.ObjectId,
+                        ref: 'User'  
+                    },
+                    username: String
+            }
+    }]
 })
 
 const Post = mongoose.model('Post', postSchema)
