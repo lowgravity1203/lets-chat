@@ -1,0 +1,36 @@
+<main class="main--grid">
+  <div class="index--home">
+    <% if (!user) { %>
+
+    <div>
+      <h3 class="home--title">
+        Rethinking the Way We Learn,
+        <br />
+        <span>Together.</span>
+      </h3>
+    </div>
+    <div class="home--subtitle">
+      <h2>Join today</h2>
+    </div>
+    <section class="account">
+      <div class="email">
+        <form action="/register" method="POST">
+          <input type="text" name="username" placeholder="Enter email" />
+          <br />
+          <input type="password" name="password" placeholder="Password" />
+          <br />
+          <button id="signup" class="btn" type="submit">Sign Up</button>
+        </form>
+      </div>
+      <br />
+      <div class="fb">
+        <h3>Create w/</h3>
+        <a href="/auth/facebook"><i class="fab fa-facebook-f"></i>acebook</a>
+      </div>
+    </section>
+
+    <% } else { %>
+    <h1>Hello <%= user.displayName %></h1>
+    <% } %>
+  </div>
+</main>
