@@ -15,10 +15,19 @@ const config = require("./configuration/config")
 const cookieParser = require('cookie-parser')
 const FacebookStrategy = require('passport-facebook').Strategy
 
+// data = ["bit manipulation", "logic puzzles", "OO design", "recursion", "sorting", "searching"]
 
-// Channel.create({name: "Main"}, (err, channel)=>{
-//   if(err)console.log(err)
-//   console.log(channel)
+
+// Channel.findOne({name: "Algorithms"}, (err, channel)=>{
+//  if(err){
+//    console.log(err)
+//  }else {
+//    data.forEach(function(item){
+//      channel.tag.push(item)
+//    })
+//    channel.save()
+//    console.log(channel)
+//  }
 // })
 
 
@@ -35,8 +44,19 @@ const indexRoutes = require('./routes/index')
 const channelRoutes = require('./routes/channels')
 const postRoutes = require('./routes/posts')
 
+
 // Require database info from file
 // require('./db/db')
+
+// Use static file for css, urlencoded for req.body, and methodOverride
+app.use(express.static(__dirname + '/public'))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cookieParser());
+app.use(methodOverride('_method'))
+app.use(bodyParser.json())
+app.set('view engine', 'ejs')
+app.set('layout', 'layouts/layout')
+app.use(expressLayouts)
 
 //PASSPORT CONFIGURATION
 app.use(
@@ -46,13 +66,20 @@ app.use(
     saveUninitialized: false,
   }),
 )
-
+app.use(passport.initialize())
+app.use(passport.session())
 passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(function(user, done){
   done(null, user)
 })
 passport.deserializeUser(function(obj, done){
-  done(null, obj)
+  User.findById(obj._id, (err, foundUser) => {
+    if(err){
+      console.log(err)
+    }else {
+      done(null, foundUser.toObject())
+    }
+  })
 })
 
 //Facebook Login
@@ -90,17 +117,7 @@ function(accessToken, refreshToken, profile, done) {
 }
 ));
 
-// Use static file for css, urlencoded for req.body, and methodOverride
-app.use(express.static(__dirname + '/public'))
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cookieParser());
-app.use(methodOverride('_method'))
-app.use(bodyParser.json())
-app.use(passport.initialize())
-app.use(passport.session())
-app.set('view engine', 'ejs')
-app.set('layout', 'layouts/layout')
-app.use(expressLayouts)
+
 
 //A MIDDLEWARE FOR EVERY ROUTE IN ORDER TO REQ.USER
 app.use(function (req, res, next) {
@@ -112,6 +129,7 @@ app.use(function (req, res, next) {
 app.use('/', indexRoutes)
 app.use('/channel', channelRoutes)
 app.use('/channel/:user_id', postRoutes)
+
 
 app.listen(3000, () => {
   console.log('app is listening on port 3000')

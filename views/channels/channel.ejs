@@ -1,38 +1,31 @@
-
-  
-
-
-
 <main class="main--grid">
+
+
     <div class="channel--grid">
         <div class="boxes box1">Header
-        <div>
-          <h3>this is the <%= currentChannel.name %></h3>
-            <% currentChannel.tag.forEach(tag => { %>
-                <button><%= tag %></button>
-            <% }) %>
+
         </div>
-    </div>
-        <div class="boxes box2">Post Sidebar</div>
+
+        <!-- Posts sorted by tag will display here -->
+        <div class="boxes box2">Post Sidebar
+
+        </div>
         
-        <!-- Where all other channels will be displayed -->
+        <!-- This will display the other channels  -->
         <div class="boxes box3">Channel Sidebar
-            
             <ul>
-                <li><a href="/channel/<%= currentUser._id %>/main">Main</a></li>
+                <a href="/channel/<%= currentUser._id %>/main" >Main</a>
                 <% currentUser.interests.forEach(interest => { %>
                     <% interest.name.forEach(item => { %>
-                        <% if(currentChannel.name !== item){ %>
-                            <li>
-                                <a href="/channel/<%= currentUser._id %>/<%= item %>"><%= item %></a>
-                            </li>
-                        <% } %> 
+                        <li>
+                            <a href="/channel/<%= currentUser._id %>/<%= item %>"><%= item %></a>
+                        </li>
                     <% }) %>
                 <% }) %>
             </ul>
         </div>
 
-        <!-- Where the posts will be displayed -->
+        <!-- This will display the posts -->
         <div class="boxes box4">Main
             <ul>
                 <% currentChannel.post.forEach(post => { %>
@@ -52,7 +45,7 @@
             </ul>
         </div>
 
-        <!-- Where you can write a post -->
+        <!-- You can write a post here -->
         <div class="boxes box5">Make a Post
             <form action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>" method="POST">
                 <input type="text" name="text" placeholder="text"> <br>
@@ -67,18 +60,8 @@
     </div>
 </main>
 
+<a href="/channel/<%= currentUser._id %> /main">Back to main channel</a>
 
 
+  
 
-
-
-
-
-
-
-
-
-
-   
-
-    <a href="/channel/<%= currentUser._id %>/main ">Back to main channel</a>
