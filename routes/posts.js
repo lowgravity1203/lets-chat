@@ -16,12 +16,12 @@ router.post("/:channel", (req, res) => {
                 if(err){
                     console.log(err)
                 } else {
-                    post.author.id = req.user.id
+                    post.author.id = req.user._id
                     post.author.username = req.user.username
                     post.save()
                     channel.post.push(post)
                     channel.save()
-                    res.redirect("/channel/" + req.user.id + "/" + req.params.channel)
+                    res.redirect("/channel/" + req.user._id + "/" + req.params.channel)
                 }
             })
         }
@@ -56,7 +56,7 @@ router.delete("/:channel/:post_id", (req, res) => {
 
 // Display edit page to edit a post
 router.get("/:channel/:post_id/edit", (req, res) => {
-    Channel.findById(req.params.channel, (err,foudnChannel) => {
+    Channel.findOne({name: req.params.channel}, (err,foundChannel) => {
         if(err){
             console.log(err)
         }else {
@@ -103,5 +103,16 @@ router.put("/:channel/:post_id/edit", (req, res) => {
     })
 })
 
+
+// Display form to reply to post
+router.get("/:channel/:post_id/reply", (req, res) => {
+        Channel.findOne({name: req.params.channel}, (err, foundChannel)=> {
+                if(err)console.log(err)
+                Post.findById(req.params.post_id, (err, foundPost)=> {
+                        if(err)console.log(err)
+                        res.render("posts/reply", {currentChannel: foundChannel, post: foundPost})
+                })
+        })
+})
 
 module.exports = router

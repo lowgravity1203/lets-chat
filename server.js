@@ -11,21 +11,26 @@ const Interest = require('./models/interest')
 const Post = require('./models/post')
 const dotenv = require('dotenv').config()
 const mongoose = require("mongoose")
+const config = require("./configuration/config")
+const cookieParser = require('cookie-parser')
+const FacebookStrategy = require('passport-facebook').Strategy
+const google = require('googleapis');
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
-// let data = "git"
 
-// Channel.findOne({name: "Tutoring"}, (err, foundChannel) => {
-//   if(err){
-//     console.log(err)
-//   }else {
-//     foundChannel.tag.push(data)
-//     foundChannel.save((err, savedChannel) => {
-//       if(err) {
-//         console.log(err)
-//       } else 
-//       console.log(foundChannel)
-//     })
-//   }
+// data = ["bit manipulation", "logic puzzles", "OO design", "recursion", "sorting", "searching"]
+
+
+// Channel.findOne({name: "Algorithms"}, (err, channel)=>{
+//  if(err){
+//    console.log(err)
+//  }else {
+//    data.forEach(function(item){
+//      channel.tag.push(item)
+//    })
+//    channel.save()
+//    console.log(channel)
+//  }
 // })
 
 
@@ -42,8 +47,18 @@ const indexRoutes = require('./routes/index')
 const channelRoutes = require('./routes/channels')
 const postRoutes = require('./routes/posts')
 
-// Require database info from file
-// require('./db/db')
+
+
+
+// Use static file for css, urlencoded for req.body, and methodOverride
+app.use(express.static(__dirname + '/public'))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cookieParser());
+app.use(methodOverride('_method'))
+app.use(bodyParser.json())
+app.set('view engine', 'ejs')
+app.set('layout', 'layouts/layout')
+app.use(expressLayouts)
 
 //PASSPORT CONFIGURATION
 app.use(
@@ -56,17 +71,67 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 passport.use(new LocalStrategy(User.authenticate()))
-passport.serializeUser(User.serializeUser())
-passport.deserializeUser(User.deserializeUser())
+passport.serializeUser(function(user, done){
+  done(null, user)
+})
+passport.deserializeUser(function(obj, done){
+  User.findById(obj._id, (err, foundUser) => {
+    if(err){
+      console.log(err)
+    }else {
+      done(null, foundUser.toObject())
+    }
+  })
+})
 
-// Use static file for css, urlencoded for req.body, and methodOverride
-app.use(express.static(__dirname + '/public'))
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(methodOverride('_method'))
-app.use(bodyParser.json())
-app.set('view engine', 'ejs')
-app.set('layout', 'layouts/layout')
-app.use(expressLayouts)
+// //Google Auth
+// passport.use(new GoogleStrategy({
+//   clientID: config.google_client_id,
+//   clientSecret: config.google_client_secret,
+//   callbackURL: "http://localhost:3000/auth/google/callback"
+// },
+// function(accessToken, refreshToken, profile, done) {
+//     userProfile=profile;
+//     return done(null, userProfile);
+// }
+// ));
+
+//Facebook Auth
+passport.use(new FacebookStrategy({ //This is class constructor argument telling Passport to create a new Facebook Auth Strategy
+  clientID: config.facebook_api_key,//The App ID generated when app was created on https://developers.facebook.com/
+  clientSecret: config.facebook_api_secret,//The App Secret generated when app was created on https://developers.facebook.com/
+  callbackURL: config.callback_url,
+  profile: ['id', 'displayName'] // You have the option to specify the profile objects you want returned
+},
+function(accessToken, refreshToken, profile, done) {
+  //Check the DB to find a User with the profile.id
+  User.findOne({ facebook_id: profile.id }, function(err, user) {//See if a User already exists with the Facebook ID
+    if(err) {
+      console.log(err);  // handle errors!
+    }
+    
+    if (user) {
+      done(null, user); //If User already exists login 
+      
+    } else { //else create a new User
+      user = new User({
+        facebook_id: profile.id, //pass in the id and displayName params from Facebook
+        username: profile.displayName
+      });
+      user.save(function(err) { //Save User if there are no errors else redirect to login route
+        if(err) {
+          console.log(err);  // handle errors!
+        } else {
+          console.log("saving user ...");
+          done(null, user);
+        }
+      });
+    }
+  });
+}
+));
+
+
 
 //A MIDDLEWARE FOR EVERY ROUTE IN ORDER TO REQ.USER
 app.use(function (req, res, next) {
@@ -79,6 +144,9 @@ app.use('/', indexRoutes)
 app.use('/channel', channelRoutes)
 app.use('/channel/:user_id', postRoutes)
 
+
 app.listen(3000, () => {
   console.log('app is listening on port 3000')
 })
+
+    

@@ -3,18 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="text/css" rel="stylesheet" href="/css/app.css" />
+    <link type="text/css" rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/app.js" defer></script>
     <title>LetsChat</title>
   </head>
   <script
     src="https://kit.fontawesome.com/986cb89023.js"
     crossorigin="anonymous"
   ></script>
+
   <body>
-    <%- include('../partials/header.ejs') %>
+    <%- include("../partials/header.ejs") %>
     <!--  -->
     <%- body %>
     <!--  -->
-    <%- include('../partials/footer.ejs') %>
+    <%- include("../partials/footer.ejs") %>
   </body>
 </html>
