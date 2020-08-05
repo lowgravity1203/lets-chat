@@ -17,6 +17,8 @@ const cookieParser = require('cookie-parser')
 const FacebookStrategy = require('passport-facebook').Strategy
 const google = require('googleapis');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 
 // data = ["bit manipulation", "logic puzzles", "OO design", "recursion", "sorting", "searching"]
@@ -38,7 +40,7 @@ const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 //database connection
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
-const connection = mongoose.connection;
+const connection = mongoose.createConnection(connectionOptions);
 connection.once('open', () => {
     console.log('Connected Database Successfully')
 })
@@ -60,6 +62,9 @@ app.use(bodyParser.json())
 app.set('view engine', 'ejs')
 app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
+app.use(session({
+  store: new MongoStore({ mongooseConnection: connection })
+}));
 
 //PASSPORT CONFIGURATION
 app.use(
