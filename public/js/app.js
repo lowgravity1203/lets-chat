@@ -1,7 +1,24 @@
-const test = document.getElementById('signup')
-
-test.addEventListener('click', congrats)
-
-function congrats() {
-  alert(`Congrats...you clicked a button, bruh`)
+function checkBoxLimit(){
+  let limit = 4
+  let form = document.getElementById('interest_form')
+  let checkBoxGroup = form.querySelectorAll('input[type="checkbox"]')
+  for(let i = 0; i < checkBoxGroup.length; i++){
+    checkBoxGroup[i].onclick = function(){
+      let checkedcount = 0
+      for(let i = 0; i < checkBoxGroup.length; i++){
+        checkedcount += (checkBoxGroup[i].checked) ? 1 : 0
+      }
+      if(checkedcount > limit){
+        console.log("NOOOO")
+        this.checked = false
+      }
+    }
+  }
 }
+
+checkBoxLimit()
+
+
+
+
+

@@ -53,11 +53,11 @@ router.get('/auth/facebook', passport.authenticate('facebook',{scope:'email'}));
 router.get('/auth/facebook/callback',
     passport.authenticate('facebook'),
     function(req, res) {
-        if(req.user.interests.length === 0){
+        // if(req.user.interests.length === 0){
             res.redirect("/channel/interests/" + req.user.id)
-        } else {
-            res.redirect("/channel/" + req.user.id + "/main") 
-        } 
+        // } else {
+        //     res.redirect("/channel/" + req.user.id + "/main") 
+        // } 
     });
   
 function ensureAuthenticated(req, res, next) {
