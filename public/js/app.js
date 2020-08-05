@@ -9,7 +9,6 @@ function checkBoxLimit(){
         checkedcount += (checkBoxGroup[i].checked) ? 1 : 0
       }
       if(checkedcount > limit){
-        console.log("NOOOO")
         this.checked = false
       }
     }
