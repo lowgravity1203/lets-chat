@@ -21,7 +21,6 @@ router.post("/:channel", (req, res) => {
                     post.save()
                     channel.post.push(post)
                     channel.save()
-                    console.log(req.user._id)
                     res.redirect("/channel/" + req.user._id + "/" + req.params.channel)
                 }
             })
