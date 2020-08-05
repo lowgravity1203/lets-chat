@@ -27,6 +27,7 @@ router.get('/:user_id/main', (req, res) => {
   })
 })
 
+
 // Get route to show any channel selected by user
 router.get('/:user_id/:channel', (req, res) => {
   Channel.findOne({ name: req.params.channel })
