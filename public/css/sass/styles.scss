@@ -18,6 +18,10 @@ body {
   height: 100vh;
   font-size: 62.5%;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  a {
+    color: white;
+  }
 }
 
 .main--grid {
@@ -38,14 +42,39 @@ body {
       'box1 box1 box1 box1 box1'
       'box3 box4 box4 box4 box2'
       'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
+      'box3 box4 box4 box4 box2'
       'box3 box5 box5 box5 box2';
-
+    //
+    //
     // grid-template-areas:
     //   "box1 box1 box1 box1 box1"
     //   "box3 box4 box4 box4 box2"
     //   "box3 box4 box4 box4 box2"
     //   "box3 box5 box5 box4 box2";
-
+    //
+    //
     .boxes {
       background-color: #444;
       color: $base-color;
@@ -56,6 +85,7 @@ body {
 
     .box1 {
       grid-area: box1;
+      background-color: $secondary-color;
     }
     .box2 {
       grid-area: box2;
@@ -66,10 +96,16 @@ body {
 
     .box4 {
       grid-area: box4;
+      background-color: $primary-color;
     }
 
     .box5 {
       grid-area: box5;
+    }
+
+    .channel-sidebar {
+      margin-bottom: 1rem;
+      color: $primary-color;
     }
   }
 }

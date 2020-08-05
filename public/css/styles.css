@@ -12,6 +12,8 @@ body {
   height: 100vh;
   font-size: 62.5%;
   font-family: Verdana, Geneva, Tahoma, sans-serif; }
+  body a {
+    color: white; }
 
 .main--grid {
   height: 80vh;
@@ -24,7 +26,7 @@ body {
     grid-template-columns: repeat(5, 1fr);
     background-color: #fff;
     color: #444;
-    grid-template-areas: 'box1 box1 box1 box1 box1' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box5 box5 box5 box2'; }
+    grid-template-areas: 'box1 box1 box1 box1 box1' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box5 box5 box5 box2'; }
     .main--grid .channel--grid .boxes {
       background-color: #444;
       color: #fff;
@@ -32,15 +34,20 @@ body {
       padding: 1rem;
       font-size: 1rem; }
     .main--grid .channel--grid .box1 {
-      grid-area: box1; }
+      grid-area: box1;
+      background-color: #8c0874; }
     .main--grid .channel--grid .box2 {
       grid-area: box2; }
     .main--grid .channel--grid .box3 {
       grid-area: box3; }
     .main--grid .channel--grid .box4 {
-      grid-area: box4; }
+      grid-area: box4;
+      background-color: #00879a; }
     .main--grid .channel--grid .box5 {
       grid-area: box5; }
+    .main--grid .channel--grid .channel-sidebar {
+      margin-bottom: 1rem;
+      color: #00879a; }
 
 header nav {
   background-color: #fff;
