@@ -1,6 +1,6 @@
 <main class="main--grid">
   <section class="channel__interests--section">
-    <h1 id="hi">#channel_interests</h1>
+    <h1>#channel_interests</h1>
 
     <form
       action="/channel/<%= currentUser._id %>"
@@ -11,7 +11,6 @@
       <label
         ><input
           type="checkbox"
-          class="cb"
           id="<%= interest.name %>"
           name="<%= interest.name %>"
           value="<%= interest.name %>"
@@ -22,5 +21,4 @@
       <button type="submit">Submit</button>
     </form>
   </section>
-  <script type="text/javascript" scr="scripts/script.js"></script>
 </main>
