@@ -17,13 +17,13 @@
       >
       <div class="channels-post-ctn">
           <div class="ctn1">
-            <input type="text" name="text" class="post" placeholder="📝" />
+            <input type="text" name="text" class="post" placeholder="📝 create a post" />
           </div>
           <div class="ctn3">
             <button class="btn-post" type="submit">Send</button>
             </div>
           <div class="ctn2">
-            <label>tag 🏷️
+            <label> 🏷️ tag a post
             <select class="tag" name="tag">
               <% currentChannel.tag.forEach(tag => { %>
               <option value="<%= tag %>"><%= tag %></option>
