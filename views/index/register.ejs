@@ -3,12 +3,20 @@
     <h1>Please Register</h1>
     <br />
     <form action="/register" method="POST">
-      <input type="text" name="username" placeholder="Enter email" />
+      <input class="input-register type="text" name="username"
+      placeholder="Email" />
       <br />
       <br />
-      <input type="password" name="password" placeholder="password" />
+      <input
+        class="input-register"
+        type="password"
+        name="password"
+        placeholder="Password"
+      />
       <br />
       <button class="btn" type="submit">Submit</button>
     </form>
   </div>
 </main>
+
+<%- include("../partials/footer.ejs") %>

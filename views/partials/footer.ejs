@@ -1,46 +1,41 @@
 <footer>
   <nav>
     <div class="footer--col-1">
-      <div class="footer--flex-ctn">
-        <li class="footer--flex-item">
-          <strong class="flex-item--category">Product</strong>
-        </li>
-
-        <li class="footer--flex-item"><a href="/">abc</a></li>
-        <li class="footer--flex-item"><a href="#">xyz</a></li>
+      <div class="flex-ctn">
+        <li class="item--category">Product</li>
+        <li><a class="flex-item" href="/">abc</a></li>
+        <li><a class="flex-item" href="#">xyz</a></li>
       </div>
     </div>
 
     <div class="footer--col-2">
-      <div class="footer--flex-ctn">
-        <li class="flex-item--logo">
+      <div class="flex-ctn">
+        <li>
           <a href="#">
-            <i class="fad fa-comments-alt fa-1x"></i>
+            <i class="fad fa-comments-alt fa-2x logo"></i>
           </a>
         </li>
 
         <% if(!currentUser){ %>
-        <li class="footer--flex-item"><a href="/login">Login</a></li>
-        <li class="footer--flex-item"><a href="/register">Sign Up</a></li>
+        <li><a class="flex-item" href="#">Login</a></li>
+        <li><a class="flex-item" href="/register">Sign Up</a></li>
         <% } else { %>
-        <li class="footer--flex-item">
+        <li class="flex-item">
           <a href="#">Signed is as <%= currentUser.username %></a>
         </li>
-        <li class="footer--flex-item"><a href="/logout">Logout</a></li>
+        <li class="flex-item"><a href="/logout">Logout</a></li>
         <% } %>
       </div>
     </div>
 
     <div class="footer--col-3">
-      <div class="footer--flex-ctn">
-        <li class="flex-item--category">
-          <strong>Company</strong>
+      <div class="flex-ctn">
+        <li class="item--category">Company</li>
+        <li>
+          <a class="flex-item" href="#">About Us</a>
         </li>
-        <li class="footer--flex-item">
-          <a href="#">About Us</a>
-        </li>
-        <li class="footer--flex-item">
-          <a href="#">blog</a>
+        <li>
+          <a class="flex-item" href="#">blog</a>
         </li>
       </div>
     </div>
