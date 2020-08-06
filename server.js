@@ -84,9 +84,9 @@ app.use(expressLayouts)
 
 // middleware - session config
 app.use(session({
-  store: new MongoStore({
-    url: process.env.ATLAS_URI || "mongodb://localhost:27017/gamelib",
-  }),   
+  // store: new MongoStore({
+  //   url: process.env.ATLAS_URI || "mongodb://localhost:27017/gamelib",
+  // }),   
   //secret
   secret: process.env.SECRET || 'anything',
   //resave
