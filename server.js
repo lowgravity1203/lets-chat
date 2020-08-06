@@ -168,14 +168,6 @@ function(accessToken, refreshToken, profile, done) {
 
 app.use(passport.initialize())
 app.use(passport.session())
-
-//A MIDDLEWARE FOR EVERY ROUTE IN ORDER TO REQ.USER
-app.use(function (req, res, next) {
-  res.locals.currentUser = req.user
-  next()
-})
-
-// Use routes
 app.use('/', indexRoutes)
 app.use('/channel', channelRoutes)
 app.use('/channel/:user_id', postRoutes)
