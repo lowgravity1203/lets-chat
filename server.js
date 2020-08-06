@@ -78,9 +78,9 @@ app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 
 // rework, check james code
-app.use(session({
-  store: new MongoStore({ mongooseConnection: mongoose.connection })
-}));
+// app.use(session({
+//   store: new MongoStore({ mongooseConnection: mongoose.connection })
+// }));
 
 // middleware - session config
 app.use(session({
@@ -101,13 +101,13 @@ app.use(session({
 
 
 //PASSPORT CONFIGURATION
-app.use(
-  require('express-session')({
-    secret: 'anything',
-    resave: false,
-    saveUninitialized: false,
-  }),
-)
+// app.use(
+//   require('express-session')({
+//     secret: 'anything',
+//     resave: false,
+//     saveUninitialized: false,
+//   }),
+// )
 app.use(passport.initialize())
 app.use(passport.session())
 passport.use(new LocalStrategy(User.authenticate()))
