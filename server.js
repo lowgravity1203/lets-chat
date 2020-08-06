@@ -63,7 +63,7 @@ app.use(expressLayouts)
 //PASSPORT CONFIGURATION
 app.use(
   require('express-session')({
-    secret: 'anything can go here',
+    secret: 'anything',
     resave: false,
     saveUninitialized: false,
   }),
