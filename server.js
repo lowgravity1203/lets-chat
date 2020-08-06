@@ -38,12 +38,26 @@ const MongoStore = require('connect-mongo')(session);
 
 
 //database connection
-const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
-const connection = mongoose.createConnection(connectionOptions);
-connection.once('open', () => {
-    console.log('Connected Database Successfully')
-})
+dbURI = process.env.ATLAS_URI
+dbOptions = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+}
+const dbConnect = async () => {
+  try {
+    await mongoose.connect(dbURI, dbOptions)
+    console.log(`mongoose connected open on ${dbURI}`)
+    const connection = mongoose.connection;
+    connection.once('open', ()=> {
+      console.log('connnected data')
+    })
+  } catch (err) {
+    db.on('error', err => console.error(`error on ${err}`))
+  }
+}
+dbConnect()
 
 // Requiring routes
 const indexRoutes = require('./routes/index')
@@ -62,9 +76,29 @@ app.use(bodyParser.json())
 app.set('view engine', 'ejs')
 app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
+
+// rework, check james code
 app.use(session({
-  store: new MongoStore({ mongooseConnection: connection })
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
+
+// middleware - session config
+// app.use(session({
+//   store: new MongoStore({
+//     url: process.env.MONGODB_URI || "mongodb://localhost:27017/gamelib",
+//   }),   
+//   //secret
+//   secret: process.env.SECRET || 'anything can go here',
+//   //resave
+//   resave: false,
+//   //saveUninitialized
+//   saveUninitialized: false,
+//   cookie: {
+//     maxAge: 1000 * 60 * 10
+//   }
+// })
+// )
+
 
 //PASSPORT CONFIGURATION
 app.use(
