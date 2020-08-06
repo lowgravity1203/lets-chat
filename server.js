@@ -109,7 +109,7 @@ app.use(session({
 //   }),
 // )
 app.use(passport.initialize())
-app.use(passport.session())
+// app.use(passport.session())
 passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(function(user, done){
   done(null, user)
