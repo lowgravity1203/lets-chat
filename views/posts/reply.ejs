@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=H, initial-scale=1.0">
-        <title>Document</title>
-</head>
-<body>
-        <h1>reply page</h1>
-        <div>
-                <%= post.author.username %> 
-                <%= post.text %> 
-                <%= post.tag %> 
-        </div>
-        <form action="" method="POST">
-                <input type="text">
-
-        </form>
-        
-</body>
-</html>
+<div class="main--grid">
+  <div class="edit-ctn">
+    <h1>Reply</h1>
+    <br />
+    <div>
+      <%= post.author.username %> <%= post.text %> <%= post.tag %>
+    </div>
+    <br />
+    <form action="" method="POST">
+      <input type="text" />
+    </form>
+  </div>
+</div>

@@ -1,36 +1,51 @@
 <main class="main--grid">
   <div class="index--home">
     <% if (!user) { %>
-
-    <div>
-      <h3 class="home--title">
+    <div class="title">
+      <h3>
         Rethinking the Way We Learn,
-        <br />
+      </h3>
+      <h3>
         <span>Together.</span>
       </h3>
+
+      <div class="logo">
+        <i class="fad fa-code fa-3x"></i>
+      </div>
+      <div class="subtitle">
+        <h2><i>Join today</i></h2>
+      </div>
     </div>
-    <div class="home--subtitle">
-      <h2>Join today</h2>
-    </div>
-    <section class="account">
+    <section class="credentials">
+      <div class="fb">
+        <h3>w/</h3>
+        <a href="/auth/facebook"
+          ><i class="fab fa-facebook-f logo"></i>acebook</a
+        >
+      </div>
+      <br />
       <div class="email">
+        <i class="fad fa-sort-circle-up fa-3x logo"></i>
         <form action="/register" method="POST">
-          <input type="text" name="username" placeholder="Enter email" />
+          <input type="text" name="username" placeholder="Email" />
           <br />
           <input type="password" name="password" placeholder="Password" />
           <br />
           <button id="signup" class="btn" type="submit">Sign Up</button>
         </form>
       </div>
-      <br />
-      <div class="fb">
-        <h3>Create w/</h3>
-        <a href="/auth/facebook"><i class="fab fa-facebook-f"></i>acebook</a>
-      </div>
     </section>
 
     <% } else { %>
-    <h1>Hello <%= user.displayName %></h1>
-    <% } %>
+
+    <section class="dashboard">
+      <h1>Hello, <%= currentUser.username %></h1>
+      <h3>
+        Return to <a href="/channel/<%= currentUser._id %>/main">#main</a>
+      </h3>
+      <% } %>
+    </section>
   </div>
 </main>
+
+<%- include("../partials/footer.ejs") %>
