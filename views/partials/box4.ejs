@@ -6,17 +6,25 @@
       <li>
         🤓: <%= post.author.username %> <br />
         📭: <%= post.text %> <br />
-        🏷️: <%= post.tag %> <br />
+        <% if(isAChannelPage) { %>
+          🏷️: <%= post.tag %> <br />
+        <% } %>
         📅: <%= date %> <br />
         <div class="btn-panel-box4">
           <% if(currentUser && post.author.id.equals(currentUser._id)) { %>
-          <button class="btn-box4">
-            <a
-              class="content-box4"
-              href="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/edit"
-              >Edit</a
-            >
-          </button>
+            <button class="btn-box4">
+              <% if(isAChannelPage) { %>
+                <a
+                        class="content-box4"
+                        href="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/edit/true"
+                >Edit</a>
+              <% } else { %>
+                <a
+                        class="content-box4"
+                        href="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/edit/false"
+                >Edit</a>
+              <% } %>
+            </button>
 
           <form
             action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>?_method=DELETE"

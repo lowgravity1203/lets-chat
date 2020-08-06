@@ -54,8 +54,8 @@ router.delete("/:channel/:post_id", (req, res) => {
     })
 })
 
-// Display edit page to edit a post
-router.get("/:channel/:post_id/edit", (req, res) => {
+// Display edit page to edit a post, either with or without the option to change the tag for the post
+router.get("/:channel/:post_id/edit/:includeTags", (req, res) => {
     Channel.findOne({name: req.params.channel}, (err,foundChannel) => {
         if(err){
             console.log(err)
@@ -64,12 +64,12 @@ router.get("/:channel/:post_id/edit", (req, res) => {
                 if(err){
                     console.log(err)
                 } else {
-                    res.render("posts/edit", {post: foundPost, currentChannel: foundChannel})
+                    const showTagSelectionDropdown = req.params.includeTags === 'true';
+                    res.render("posts/edit", {post: foundPost, currentChannel: foundChannel, showTagSelectionDropdown})
                 }
             })
         }
     })
-    
 })
 
 // Handle edit post logic
