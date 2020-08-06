@@ -51,7 +51,7 @@ const dbConnect = async () => {
     console.log(`mongoose connected open on ${dbURI}`)
     const connection = mongoose.connection;
     connection.once('open', ()=> {
-      console.log('connnected data')
+      console.log('c')
     })
   } catch (err) {
     db.on('error', err => console.error(`error on ${err}`))
@@ -83,27 +83,27 @@ app.use(session({
 }));
 
 // middleware - session config
-// app.use(session({
-//   store: new MongoStore({
-//     url: process.env.MONGODB_URI || "mongodb://localhost:27017/gamelib",
-//   }),   
-//   //secret
-//   secret: process.env.SECRET || 'anything can go here',
-//   //resave
-//   resave: false,
-//   //saveUninitialized
-//   saveUninitialized: false,
-//   cookie: {
-//     maxAge: 1000 * 60 * 10
-//   }
-// })
-// )
+app.use(session({
+  store: new MongoStore({
+    url: process.env.MONGODB_URI || "mongodb://localhost:27017/gamelib",
+  }),   
+  //secret
+  secret: process.env.SECRET || 'anything',
+  //resave
+  resave: false,
+  //saveUninitialized
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 1000 * 60 * 10
+  }
+})
+)
 
 
 //PASSPORT CONFIGURATION
 app.use(
   require('express-session')({
-    secret: 'anything can go here',
+    secret: 'anything',
     resave: false,
     saveUninitialized: false,
   }),
