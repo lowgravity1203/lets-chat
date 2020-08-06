@@ -4,17 +4,19 @@
     <h1>Edit Post</h1>
         <form action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/edit?_method=PUT" method="POST">
             <input class="input-edit" type="text" name="text" value="<%= post.text %>"><br>
-            <select name="tag">
-                <% currentChannel.tag.forEach(tag => { %>
-                        <option class="input-edit" value="<%= tag %>" 
-                            <% if(tag === post.tag){ %>
+            <% if(showTagSelectionDropdown) { %>
+                <select name="tag">
+                    <% currentChannel.tag.forEach(tag => { %>
+                        <option class="input-edit" value="<%= tag %>"
+                        <% if(tag === post.tag){ %>
                                 selected
-                            <% } %> 
+                                <% } %>
                         >
                             <%= tag %>
                         </option>
-                <% }) %>
-            </select> <br>
+                    <% }) %>
+                </select> <br>
+            <% } %>
             <button class="edit-btn" type="Submit">Submit</button>
             </form>
     </div>
