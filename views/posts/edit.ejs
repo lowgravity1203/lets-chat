@@ -1,47 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit post</title>
-</head>
-
-<body>
-    <nav>
-        <div>
-            <ul>
-                <a href="/"></a>
-                <% if(!currentUser){ %>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Sign Up</a></li>
-                <% } else { %>
-                <a href="#">
-                    <li>Signed is as <%= currentUser.name %></li>
-                </a>
-                <li><a href="/logout">Logout</a></li>
-                <% } %>
-            </ul>
-        </div>
-    </nav>
-    <h1>This is the edit post page</h1>
-
-    <form action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/edit?_method=PUT" method="POST">
-        Text: <input type="text" name="text" value="<%= post.text %>"><br>
-        <select name="tag">
-            <% currentChannel.tag.forEach(tag => { %>
-                    <option value="<%= tag %>" 
+<div class="main--grid">
+    <div class="edit-ctn">    
+    <h1>Edit Post</h1>
+        <form action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/edit?_method=PUT" method="POST">
+            <input class="input-edit" type="text" name="text" value="<%= post.text %>"><br>
+            <% if(showTagSelectionDropdown) { %>
+                <select name="tag">
+                    <% currentChannel.tag.forEach(tag => { %>
+                        <option class="input-edit" value="<%= tag %>"
                         <% if(tag === post.tag){ %>
-                            selected
-                        <% } %> 
-                    >
-                        <%= tag %>
-                    </option>
-            <% }) %>
-        </select> <br>
-        <button type="Submit">Submit </button>
-    </form>
+                                selected
+                                <% } %>
+                        >
+                            <%= tag %>
+                        </option>
+                    <% }) %>
+                </select> <br>
+            <% } %>
+            <button class="edit-btn" type="Submit">Submit</button>
+            </form>
+    </div>
+</div>
 
-</body>
-
-</html>
+<%- include("../partials/footer.ejs") %>

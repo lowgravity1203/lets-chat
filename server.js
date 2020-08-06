@@ -1,15 +1,7 @@
 const express = require('express')
-const app = express()
-const methodOverride = require('method-override')
 const bodyParser = require('body-parser')
-const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const expressLayouts = require('express-ejs-layouts')
-const User = require('./models/user')
-const Channel = require('./models/channel')
-const Interest = require('./models/interest')
-const Post = require('./models/post')
-const dotenv = require('dotenv').config()
 const mongoose = require("mongoose")
 const config = require("./configuration/config")
 const cookieParser = require('cookie-parser')
@@ -17,9 +9,27 @@ const FacebookStrategy = require('passport-facebook').Strategy
 const google = require('googleapis');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
+//session middleware
+const session = require('express-session');
+const passport = require('passport')
+const MongoStore = require('connect-mongo')(session);
+const methodOverride = require('method-override')
+
+// load env vars
+require('dotenv').config()
+
+// init app
+const app = express()
+const PORT = process.env.PORT || 3000;
+
+// models
+const User = require('./models/user')
+const Channel = require('./models/channel')
+const Interest = require('./models/interest')
+const Post = require('./models/post')
+
 
 // data = ["bit manipulation", "logic puzzles", "OO design", "recursion", "sorting", "searching"]
-
 
 // Channel.findOne({name: "Algorithms"}, (err, channel)=>{
 //  if(err){
@@ -35,12 +45,26 @@ const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 
 //database connection
-const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
-const connection = mongoose.connection;
-connection.once('open', () => {
-    console.log('Connected Database Successfully')
-})
+dbURI = process.env.ATLAS_URI
+dbOptions = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+}
+const dbConnect = async () => {
+  try {
+    await mongoose.connect(dbURI, dbOptions)
+    console.log(`mongoose connected open on ${dbURI}`)
+    const connection = mongoose.connection;
+    connection.once('open', ()=> {
+      console.log('c')
+    })
+  } catch (err) {
+    db.on('error', err => console.error(`error on ${err}`))
+  }
+}
+dbConnect()
 
 // Requiring routes
 const indexRoutes = require('./routes/index')
@@ -60,16 +84,26 @@ app.set('view engine', 'ejs')
 app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 
-//PASSPORT CONFIGURATION
-app.use(
-  require('express-session')({
-    secret: 'anything can go here',
-    resave: false,
-    saveUninitialized: false,
-  }),
+
+// middleware - session config
+app.use(session({
+  store: new MongoStore({
+    url: process.env.ATLAS_URI || "mongodb://localhost:27017/gamelib",
+  }),   
+  //secret
+  secret: process.env.SECRET || 'anything',
+  //resave
+  resave: false,
+  //saveUninitialized
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 1000 * 60 * 10
+  }
+})
 )
-app.use(passport.initialize())
-app.use(passport.session())
+
+
+//PASSPORT CONFIGURATION
 passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(function(user, done){
   done(null, user)
@@ -132,6 +166,8 @@ function(accessToken, refreshToken, profile, done) {
 ));
 
 
+app.use(passport.initialize())
+app.use(passport.session())
 
 //A MIDDLEWARE FOR EVERY ROUTE IN ORDER TO REQ.USER
 app.use(function (req, res, next) {
@@ -145,7 +181,7 @@ app.use('/channel', channelRoutes)
 app.use('/channel/:user_id', postRoutes)
 
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log('app is listening on port 3000')
 })
 

@@ -29,7 +29,7 @@ router.get("/:user_id/main", (req, res) => {
         if(err){
             console.log(err)
         } else {
-           res.render("channels/main", {currentChannel: foundChannel, date: dateTime})
+           res.render("channels/main", {currentChannel: foundChannel, date: dateTime, isAChannelPage: false})
         }
     })
 })
@@ -43,7 +43,7 @@ router.get("/:user_id/:channel", (req, res) => {
         if(err){
             console.log(err)
         } else {
-           res.render("channels/channel", {currentChannel: foundChannel, date: dateTime})
+           res.render("channels/channel", {currentChannel: foundChannel, date: dateTime, isAChannelPage: true})
         }
     })
 })   

@@ -1,0 +1,49 @@
+<div class="boxes box4">
+  <div class="channels-title main-title"></div>
+  <ul>
+    <div class="main-comments-box4">
+      <% currentChannel.post.forEach(post => { %>
+      <li>
+        🤓: <%= post.author.username %> <br />
+        📭: <%= post.text %> <br />
+        <% if(isAChannelPage) { %>
+          🏷️: <%= post.tag %> <br />
+        <% } %>
+        📅: <%= date %> <br />
+        <div class="btn-panel-box4">
+          <% if(currentUser && post.author.id.equals(currentUser._id)) { %>
+            <button class="btn-box4">
+              <% if(isAChannelPage) { %>
+                <a
+                        class="content-box4"
+                        href="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/edit/true"
+                >Edit</a>
+              <% } else { %>
+                <a
+                        class="content-box4"
+                        href="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/edit/false"
+                >Edit</a>
+              <% } %>
+            </button>
+
+          <form
+            action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>?_method=DELETE"
+            method="POST"
+          >
+            <button class="btn-box4 content-box4" type="submit">Delete</button>
+          </form>
+          <% } %>
+
+          <button class="btn-box4">
+            <a
+              class="content-box4"
+              href="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/reply"
+              >Reply</a
+            >
+          </button>
+        </div>
+      </li>
+      <% }) %>
+    </div>
+  </ul>
+</div>
