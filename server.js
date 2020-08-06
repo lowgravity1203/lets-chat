@@ -3,7 +3,6 @@ const PORT = process.env.PORT || 3000;
 const app = express()
 const methodOverride = require('method-override')
 const bodyParser = require('body-parser')
-const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const expressLayouts = require('express-ejs-layouts')
 const User = require('./models/user')
@@ -18,6 +17,7 @@ const FacebookStrategy = require('passport-facebook').Strategy
 const google = require('googleapis');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const session = require('express-session');
+const passport = require('passport')
 const MongoStore = require('connect-mongo')(session);
 
 
@@ -85,7 +85,7 @@ app.use(expressLayouts)
 // middleware - session config
 app.use(session({
   store: new MongoStore({
-    url: process.env.MONGODB_URI || "mongodb://localhost:27017/gamelib",
+    url: process.env.ATLAS_URI || "mongodb://localhost:27017/gamelib",
   }),   
   //secret
   secret: process.env.SECRET || 'anything',
@@ -101,15 +101,6 @@ app.use(session({
 
 
 //PASSPORT CONFIGURATION
-// app.use(
-//   require('express-session')({
-//     secret: 'anything',
-//     resave: false,
-//     saveUninitialized: false,
-//   }),
-// )
-app.use(passport.initialize())
-// app.use(passport.session())
 passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(function(user, done){
   done(null, user)
@@ -172,6 +163,8 @@ function(accessToken, refreshToken, profile, done) {
 ));
 
 
+app.use(passport.initialize())
+app.use(passport.session())
 
 //A MIDDLEWARE FOR EVERY ROUTE IN ORDER TO REQ.USER
 app.use(function (req, res, next) {
