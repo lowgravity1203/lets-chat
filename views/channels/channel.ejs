@@ -1,81 +1,60 @@
-<main class="main--grid">
+<main class="main--grid-channels">
   <div class="channel--grid">
     <div class="boxes box1">
-      Header
-      <h1><%= currentChannel.name %> Channel</h1>
+      <h1>#<%= currentChannel.name %></h1>
+      <div class="search-bar">
+        <i class="fal fa-file-search logo"></i>
+        <input class="input-search"type="search" placeholder="Search..." class="input-field" />
+      </div>
+    </div>
+
+    <!-- You can write a post here -->
+    <div class="boxes box5">
+      <form
+      action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>"
+      method="POST"
+      >
+      <div class="channels-post-ctn">
+          <div class="ctn1">
+            <input type="text" name="text" class="post" placeholder="post" />
+          </div>
+          <div class="ctn3">
+            <button class="btn-post" type="submit">Send</button>
+            </div>
+          <div class="ctn2">
+            <select class="tag" name="tag">
+              <% currentChannel.tag.forEach(tag => { %>
+              <option value="<%= tag %>"><%= tag %></option>
+              <% }) %>
+            </select>
+          </div>
+          <br />
+      
+          </form>
+        </form>
+      </div>
     </div>
 
     <!-- Posts sorted by tag will display here -->
-    <div class="boxes box2">Post Sidebar</div>
+
+    <%- include("../partials/box2.ejs") %>
 
     <!-- This will display the other channels  -->
     <div class="boxes box3">
-      <li class="channel-sidebar">Channel Sidebar</li>
+      <div class="channels-title">#Channels</div>
       <ul>
-        <a href="/channel/<%= currentUser._id %>/main">Main</a>
+        <a href="/channel/<%= currentUser._id %>/main">#Main</a>
         <% currentUser.interests.forEach(interest => { %> <%
         interest.name.forEach(item => { %> <% if(currentChannel.name !== item){
         %>
         <li>
-          <a href="/channel/<%= currentUser._id %>/<%= item %>"><%= item %></a>
+          <a href="/channel/<%= currentUser._id %>/<%= item %>">#<%= item %></a>
         </li>
         <% } %> <% }) %> <% }) %>
       </ul>
     </div>
 
-    // This will display the posts
-    <div class="boxes box4">
-      Main
-      <ul>
-        <% currentChannel.post.forEach(post => { %>
-        <li>
-          Author: <%= post.author.username %> <br />
-          Comment: <%= post.text %> <br />
-          Tag: <%= post.tag %> <br />
-          Date: <%= date %> <br />
-          <% if(currentUser && post.author.id.equals(currentUser._id)) { %>
-          <button>
-            <a
-              href="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/edit"
-              >Edit</a
-            >
-          </button>
-          <form
-            action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>?_method=DELETE"
-            method="POST"
-          >
-            <button type="submit">Delete</button>
-          </form>
-          <% } %>
-          <button>
-            <a
-              href="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/reply"
-              >Reply</a
-            >
-          </button>
-        </li>
-        <% }) %>
-      </ul>
-    </div>
-
-    <!-- You can write a post here -->
-    <div class="boxes box5">
-      Make a Post
-      <form
-        action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>"
-        method="POST"
-      >
-        <input type="text" name="text" placeholder="text" /> <br />
-        <select name="tag">
-          <% currentChannel.tag.forEach(tag => { %>
-          <option value="<%= tag %>"><%= tag %></option>
-          <% }) %>
-        </select>
-        <br />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <!-- This will display the posts -->
+    <%- include("../partials/box4.ejs") %>
   </div>
 </main>
-
-

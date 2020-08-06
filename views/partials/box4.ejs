@@ -1,0 +1,39 @@
+<div class="boxes box4">
+  <div class="channels-title main-title"></div>
+  <ul>
+    <div class="main-comments-box4">
+      <% currentChannel.post.forEach(post => { %>
+      <li>
+        Author: <%= post.author.username %> <br />
+        Comment: <%= post.text %> <br />
+        Tag: <%= post.tag %> <br />
+        Date: <%= date %> <br />
+        <div class="btn-panel-box4">
+          <% if(currentUser && post.author.id.equals(currentUser._id)) { %>
+          <button class="btn-box4">
+            <a
+              href="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/edit"
+              >Edit</a
+            >
+          </button>
+
+          <form
+            action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>?_method=DELETE"
+            method="POST"
+          >
+            <button class="btn-box4" type="submit">Delete</button>
+          </form>
+          <% } %>
+
+          <button class="btn-box4">
+            <a
+              href="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/reply"
+              >Reply</a
+            >
+          </button>
+        </div>
+      </li>
+      <% }) %>
+    </div>
+  </ul>
+</div>

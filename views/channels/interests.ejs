@@ -1,24 +1,29 @@
 <main class="main--grid">
-  <section class="channel__interests--section">
-    <h1>#channel_interests</h1>
-
+  <section class="channel__interests">
+    <h2>Please select your top <span>4</span> interests</h2>
     <form
       action="/channel/<%= currentUser._id %>"
       id="interest_form"
       method="POST"
     >
-      <% interests.forEach(interest => { %>
-      <label
-        ><input
-          type="checkbox"
-          id="<%= interest.name %>"
-          name="<%= interest.name %>"
-          value="<%= interest.name %>"
-        /><%= interest.name %></label
-      >
-      <br />
-      <% }) %>
-      <button type="submit">Submit</button>
+      <div class="checkbox-ctn">
+        <% interests.forEach(interest => { %>
+        <label
+          ><input
+            type="checkbox"
+            id="<%= interest.name %>"
+            name="<%= interest.name %>"
+            value="<%= interest.name %>"
+          /><%= interest.name %></label
+        >
+        <br />
+        <% }) %>
+      </div>
+
+      <div class="btn-ctn">
+        <button class="btn" type="submit">Submit</button>
+      </div>
     </form>
+    <div id="errorMessageBruh"></div>
   </section>
 </main>
