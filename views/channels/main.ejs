@@ -3,11 +3,10 @@
     <div class="boxes box1">
       <h1>#Main</h1>
       <div class="search-bar">
-        <i class="fal fa-file-search logo"></i>
         <input
           class="input-search"
           type="search"
-          placeholder="Search..."
+          placeholder="🔍 Search..."
           class="input-field"
         />
       </div>
@@ -19,7 +18,7 @@
           action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>"
           method="POST"
         >
-          <input type="text" name="text" class="post" placeholder="post" />
+          <input type="text" name="text" class="post" placeholder="📝" />
           <button class="post-btn" type="submit">Send</button>
         </form>
       </div>

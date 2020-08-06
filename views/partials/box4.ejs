@@ -4,14 +4,15 @@
     <div class="main-comments-box4">
       <% currentChannel.post.forEach(post => { %>
       <li>
-        Author: <%= post.author.username %> <br />
-        Comment: <%= post.text %> <br />
-        Tag: <%= post.tag %> <br />
-        Date: <%= date %> <br />
+        🤓: <%= post.author.username %> <br />
+        📭: <%= post.text %> <br />
+        🏷️: <%= post.tag %> <br />
+        📅: <%= date %> <br />
         <div class="btn-panel-box4">
           <% if(currentUser && post.author.id.equals(currentUser._id)) { %>
           <button class="btn-box4">
             <a
+              class="content-box4"
               href="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/edit"
               >Edit</a
             >
@@ -21,12 +22,13 @@
             action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>?_method=DELETE"
             method="POST"
           >
-            <button class="btn-box4" type="submit">Delete</button>
+            <button class="btn-box4 content-box4" type="submit">Delete</button>
           </form>
           <% } %>
 
           <button class="btn-box4">
             <a
+              class="content-box4"
               href="/channel/<%= currentUser._id %>/<%= currentChannel.name %>/<%= post.id %>/reply"
               >Reply</a
             >

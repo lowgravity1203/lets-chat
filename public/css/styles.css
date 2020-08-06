@@ -180,8 +180,9 @@ footer nav {
     justify-content: center;
     align-items: center; }
     .channel__interests .btn-ctn .btn {
-      margin-top: 1.5rem;
-      padding: 0.5rem 1rem;
+      margin-top: 2rem;
+      font-size: 1rem;
+      padding: 0.75rem 1.25rem;
       border-radius: 0.5rem;
       background-color: #8c0874;
       border-style: none;
@@ -378,9 +379,13 @@ input,
       height: 2em;
       border-style: none; }
   .channels-post-ctn .ctn2 {
-    grid-area: ctn2; }
+    grid-area: ctn2;
+    justify-self: stretch; }
+    .channels-post-ctn .ctn2 label {
+      font-size: 1.5rem;
+      margin-left: -0rem; }
     .channels-post-ctn .ctn2 .tag {
-      padding: 0.5rem 0.75rem;
+      padding: 0.5rem 1.5rem;
       border-style: none; }
   .channels-post-ctn .ctn3 {
     grid-area: ctn3;
@@ -411,24 +416,62 @@ button {
 
 .input-search {
   border-style: none;
-  padding: 0.1rem 0 0 0.5rem; }
+  padding: 0.25rem 0 0.25rem 0.5rem; }
 
 .main-comments-box4 {
   display: flex;
   flex-direction: column-reverse;
-  padding: 0.5rem 0 0.5rem 0; }
+  padding: 0.5rem; }
   .main-comments-box4 li {
     flex: 0 0 auto; }
+  .main-comments-box4 li:nth-child(even) {
+    background: #fff;
+    opacity: 80%;
+    border-radius: 1rem;
+    margin: 1rem 0 1rem 0;
+    color: black;
+    padding: 0.5rem; }
+  .main-comments-box4 li:nth-child(even) button {
+    margin: 0.5rem 0.5rem 0rem 0;
+    background-color: #c11ba2;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border-style: none;
+    outline: none;
+    padding: 0.25rem 0.4rem; }
+  .main-comments-box4 .btn-box4 {
+    margin: 0.5rem 0.5rem 0rem 0;
+    background-color: #a37c02;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border-style: none;
+    outline: none;
+    padding: 0.25rem 0.4rem;
+    color: black; }
+  .main-comments-box4 .btn-panel-box4 {
+    display: flex; }
+  .main-comments-box4 .content-box4 {
+    color: white; }
 
-.btn-panel-box4 {
-  display: flex; }
-
-.btn-box4,
-.btn-box4 a {
-  margin-top: 0.25rem;
-  border-radius: 0.5rem;
-  padding: 0.1rem 0.25rem;
-  outline: none;
-  border-style: none;
-  color: #8c0874;
-  background: #fff; }
+@media (max-width: 50rem) {
+  header nav {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.3 0.1rem; }
+    header nav .user .btn--ctn a {
+      font-size: 1rem; }
+  .index--home .title h3 {
+    font-size: 1.5rem; }
+  .index--home .title .logo {
+    font-size: 1.5rem; }
+  .channel__interests {
+    font-size: 1rem; }
+  .main--grid-channels {
+    overflow-x: scroll;
+    overflow-y: scroll; }
+    .main--grid-channels .channels-title {
+      font-size: 0.75rem; }
+    .main--grid-channels li a {
+      font-size: 0.75rem; }
+    .main--grid-channels .post {
+      width: 65%; } }

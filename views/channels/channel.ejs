@@ -3,10 +3,11 @@
     <div class="boxes box1">
       <h1>#<%= currentChannel.name %></h1>
       <div class="search-bar">
-        <i class="fal fa-file-search logo"></i>
-        <input class="input-search"type="search" placeholder="Search..." class="input-field" />
+        <input class="input-search"type="search" placeholder="🔍 Search..." class="input-field" />
       </div>
     </div>
+
+    
 
     <!-- You can write a post here -->
     <div class="boxes box5">
@@ -16,17 +17,19 @@
       >
       <div class="channels-post-ctn">
           <div class="ctn1">
-            <input type="text" name="text" class="post" placeholder="post" />
+            <input type="text" name="text" class="post" placeholder="📝" />
           </div>
           <div class="ctn3">
             <button class="btn-post" type="submit">Send</button>
             </div>
           <div class="ctn2">
+            <label>tag 🏷️
             <select class="tag" name="tag">
               <% currentChannel.tag.forEach(tag => { %>
               <option value="<%= tag %>"><%= tag %></option>
               <% }) %>
             </select>
+          </label>
           </div>
           <br />
       

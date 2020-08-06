@@ -2,10 +2,13 @@
   <div class="index--home">
     <% if (!user) { %>
     <div class="title">
-      <h3 >
+      <h3>
         Rethinking the Way We Learn,
-        <br /><span>Together.</span>
       </h3>
+      <h3>
+        <span>Together.</span>
+      </h3>
+
       <div class="logo">
         <i class="fad fa-code fa-3x"></i>
       </div>
@@ -14,11 +17,13 @@
       </div>
     </div>
     <section class="credentials">
-    <div class="fb">
-      <h3>w/</h3>
-      <a href="/auth/facebook"><i class="fab fa-facebook-f logo"></i>acebook</a>
-    </div>
-    <br />
+      <div class="fb">
+        <h3>w/</h3>
+        <a href="/auth/facebook"
+          ><i class="fab fa-facebook-f logo"></i>acebook</a
+        >
+      </div>
+      <br />
       <div class="email">
         <i class="fad fa-sort-circle-up fa-3x logo"></i>
         <form action="/register" method="POST">
@@ -35,7 +40,9 @@
 
     <section class="dashboard">
       <h1>Hello, <%= currentUser.username %></h1>
-      <h3>Return to <a href="/channel/<%= currentUser._id %>/main">#main</a></h3>
+      <h3>
+        Return to <a href="/channel/<%= currentUser._id %>/main">#main</a>
+      </h3>
       <% } %>
     </section>
   </div>

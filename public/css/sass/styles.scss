@@ -275,8 +275,9 @@ footer {
     align-items: center;
 
     .btn {
-      margin-top: 1.5rem;
-      padding: 0.5rem 1rem;
+      margin-top: 2rem;
+      font-size: 1rem;
+      padding: 0.75rem 1.25rem;
       border-radius: 0.5rem;
       background-color: $secondary-color;
       border-style: none;
@@ -444,12 +445,6 @@ li {
   list-style-type: none;
 }
 
-// .button {
-//   padding: 0.5rem 1rem;
-//   font-size: 1rem;
-//   border-radius: 0.5rem;
-// }
-
 .input-register,
 .input-edit {
   border-radius: 0.5rem;
@@ -543,9 +538,15 @@ input,
 
   .ctn2 {
     grid-area: ctn2;
+    justify-self: stretch;
+
+    label {
+      font-size: 1.5rem;
+      margin-left: -0rem;
+    }
 
     .tag {
-      padding: 0.5rem 0.75rem;
+      padding: 0.5rem 1.5rem;
       border-style: none;
     }
   }
@@ -588,30 +589,100 @@ button {
 
 .input-search {
   border-style: none;
-  padding: 0.1rem 0 0 0.5rem;
+  padding: 0.25rem 0 0.25rem 0.5rem;
 }
 
 .main-comments-box4 {
   display: flex;
   flex-direction: column-reverse;
-  padding: 0.5rem 0 0.5rem 0;
+  padding: 0.5rem;
 
   li {
     flex: 0 0 auto;
   }
+
+  li:nth-child(even) {
+    background: $base-color;
+    opacity: 80%;
+    border-radius: 1rem;
+    margin: 1rem 0 1rem 0;
+    color: black;
+    padding: 0.5rem;
+  }
+
+  li:nth-child(even) button {
+    margin: 0.5rem 0.5rem 0rem 0;
+    background-color: #c11ba2;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border-style: none;
+    outline: none;
+    padding: 0.25rem 0.4rem;
+  }
+
+  .btn-box4 {
+    margin: 0.5rem 0.5rem 0rem 0;
+    background-color: $tertiary-color;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border-style: none;
+    outline: none;
+    padding: 0.25rem 0.4rem;
+    color: black;
+  }
+
+  .btn-panel-box4 {
+    display: flex;
+  }
+
+  .content-box4 {
+    color: white;
+  }
 }
 
-.btn-panel-box4 {
-  display: flex;
-}
+@media (max-width: 50rem) {
+  header nav {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.3.1rem;
 
-.btn-box4,
-.btn-box4 a {
-  margin-top: 0.25rem;
-  border-radius: 0.5rem;
-  padding: 0.1rem 0.25rem;
-  outline: none;
-  border-style: none;
-  color: $secondary-color;
-  background: $base-color;
+    .user {
+      .btn--ctn a {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .index--home {
+    .title {
+      h3 {
+        font-size: 1.5rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .channel__interests {
+    font-size: 1rem;
+  }
+
+  .main--grid-channels {
+    overflow-x: scroll;
+    overflow-y: scroll;
+
+    .channels-title {
+      font-size: 0.75rem;
+    }
+
+    li a {
+      font-size: 0.75rem;
+    }
+
+    .post {
+      width: 65%;
+    }
+  }
 }
