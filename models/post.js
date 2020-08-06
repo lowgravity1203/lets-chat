@@ -13,13 +13,7 @@ const postSchema = new mongoose.Schema({
     },
     replies: [{
         reply: String,
-        author: {
-          id: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
-          },
-          username: String
-        }
+        username: String
     }]
 })
 
