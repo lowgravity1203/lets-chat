@@ -1,28 +1,35 @@
 const express = require('express')
-const PORT = process.env.PORT || 3000;
-const app = express()
-const methodOverride = require('method-override')
 const bodyParser = require('body-parser')
 const LocalStrategy = require('passport-local')
 const expressLayouts = require('express-ejs-layouts')
-const User = require('./models/user')
-const Channel = require('./models/channel')
-const Interest = require('./models/interest')
-const Post = require('./models/post')
-const dotenv = require('dotenv').config()
 const mongoose = require("mongoose")
 const config = require("./configuration/config")
 const cookieParser = require('cookie-parser')
 const FacebookStrategy = require('passport-facebook').Strategy
 const google = require('googleapis');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+//session middleware
 const session = require('express-session');
 const passport = require('passport')
 const MongoStore = require('connect-mongo')(session);
+const methodOverride = require('method-override')
+
+// load env vars
+require('dotenv').config()
+
+// init app
+const app = express()
+const PORT = process.env.PORT || 3000;
+
+// models
+const User = require('./models/user')
+const Channel = require('./models/channel')
+const Interest = require('./models/interest')
+const Post = require('./models/post')
 
 
 // data = ["bit manipulation", "logic puzzles", "OO design", "recursion", "sorting", "searching"]
-
 
 // Channel.findOne({name: "Algorithms"}, (err, channel)=>{
 //  if(err){
@@ -77,22 +84,18 @@ app.set('view engine', 'ejs')
 app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 
-// rework, check james code
-// app.use(session({
-//   store: new MongoStore({ mongooseConnection: mongoose.connection })
-// }));
 
 // middleware - session config
 app.use(session({
-  // store: new MongoStore({
-  //   url: process.env.ATLAS_URI || "mongodb://localhost:27017/gamelib",
-  // }),   
+  store: new MongoStore({
+    url: process.env.ATLAS_URI || "mongodb://localhost:27017/gamelib",
+  }),   
   //secret
   secret: process.env.SECRET || 'anything',
   //resave
   resave: false,
   //saveUninitialized
-  saveUninitialized: false,
+  saveUninitialized: true,
   cookie: {
     maxAge: 1000 * 60 * 10
   }
