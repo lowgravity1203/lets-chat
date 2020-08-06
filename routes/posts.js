@@ -116,18 +116,13 @@ router.get("/:channel/:post_id/reply", (req, res) => {
 })
 
 router.post("/:channel/:post_id/reply", (req, res) => {
-  let comment = {
-    reply: req.body, 
-    author: {
-      id: req.user._id,
-      username: req.user.username
-    }
-  }
+  let comment = {}
   Post.findById(req.params.post_id, (err, foundPost) => {
     if(err)console.log(err)
     foundPost.replies.push(req.body)
     foundPost.save()
     console.log(foundPost)
+    console.log(req.body)
     res.redirect("/channel/" + req.user.id + "/" + req.params.channel)
   })
   
