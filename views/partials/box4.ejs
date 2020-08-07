@@ -42,6 +42,16 @@
             >
           </button>
         </div>
+        <ul>
+          <% post.replies.forEach((reply)=>{%>
+            <li>
+               <%= reply.reply %>
+               <%= reply.username %>
+            </li>
+            
+         <% }) %> 
+        </ul>
+       
       </li>
       <% }) %>
     </div>
