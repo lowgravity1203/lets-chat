@@ -10,6 +10,7 @@ Our goal for Project Two is to create a Slack-like chat app, that is specificall
 * Express
 * Mongoose
 * MongoDB Atlas
+* Socket.io
 * Javascript
 * CSS
 * HTML5
