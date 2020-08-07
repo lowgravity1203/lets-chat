@@ -39,4 +39,4 @@ Wireframes:
 
 Workflow chart:
 
-![ERD](/db/flowchart-mvp-v1)
+![ERD](/db/flowchat-mvp-v1)
