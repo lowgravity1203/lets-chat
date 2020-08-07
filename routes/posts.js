@@ -123,7 +123,6 @@ router.post("/:channel/:post_id/reply", (req, res) => {
     foundPost.save()
     res.redirect("/channel/" + req.user.id + "/" + req.params.channel)
   })
-  
 })
 
 module.exports = router
