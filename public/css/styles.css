@@ -457,7 +457,7 @@ button {
   header nav {
     display: flex;
     justify-content: space-between;
-    font-size: 0.3 0.1rem; }
+    font-size: 0.3rem 0.1rem; }
     header nav .user .btn--ctn a {
       font-size: 1rem; }
   .index--home .title h3 {
@@ -475,3 +475,31 @@ button {
       font-size: 0.75rem; }
     .main--grid-channels .post {
       width: 65%; } }
+
+#message-container {
+  width: 80%;
+  max-width: 1200px;
+}
+
+#message-container div {
+  background-color: #ccc;
+  padding: 5px;
+}
+
+#message-container div:nth-child(2n) {
+  background-color: #fff;
+}
+
+#send-container {
+  position: fixed;
+  padding-bottom: 30px;
+  bottom: 0;
+  background-color: white;
+  max-width: 1200px;
+  width: 80%;
+  display: flex;
+}
+
+#message-input {
+  flex-grow: 1;
+}
