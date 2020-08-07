@@ -31,7 +31,7 @@ Models Organization:
 
 Wireframes:
 
-![ERD](/db/wireframes-onboarding.png)
+![ERD](/db/wireframes - onboarding.png)
 ![ERD](/db/wireframes-onboarding(1).png)
 ![ERD](/db/wireframes-interests.png)
 ![ERD](/db/wireframes-interests(1).png)
