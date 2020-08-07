@@ -29,13 +29,6 @@ Models Organization:
 
 ![ERD](/db/Models.png)
 
-Wireframes:
-
-![ERD](/db/onboarding.png)
-![ERD](/db/onboardingmobile.png)
-![ERD](/db/interests.png)
-![ERD](/db/interestsmobile.png)
-![ERD](/db/general.png)
 
 Workflow chart:
 
