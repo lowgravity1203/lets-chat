@@ -26,3 +26,17 @@ MAIN page is a general chatroom that will list the users interests as clickable 
 CHANNEL pagewill have the name of the CHANNEL in the header and right beneath CHANNEL name will be a dropdown search bar that has all the tags for that CHANNEL. IF a user selects a tag from the dropdown all posts with that tag will populate in the posts sidebar. The user will be able to create a post with and select a tag from a dropdown. They can also reply to other users and their own posts. Users can also delete and edit their own posts.The user can enter another channel or return to the main chatroom from the channels sidebar.  
 
 Models Organization:
+
+![ERD] (images/Models.png)
+
+Wireframes:
+
+![ERD] (images/wireframes-onboarding)
+![ERD] (images/wireframes-onboarding(1))
+![ERD] (images/wireframes-interests)
+![ERD] (images/wireframes-interests(1))
+![ERD] (images/wireframes-General)
+
+Workflow chart:
+
+![ERD] (images/flowchart-mvp-v1)
