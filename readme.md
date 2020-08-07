@@ -27,7 +27,7 @@ CHANNEL pagewill have the name of the CHANNEL in the header and right beneath CH
 
 Models Organization:
 
-![ERD] (images/Models.png)
+![ERD] (db/Models.png)
 
 Wireframes:
 
