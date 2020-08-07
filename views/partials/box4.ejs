@@ -1,6 +1,5 @@
 <div class="boxes box4">
-  <div class="channels-title main-title"></div>
-  <ul>
+ 
     <div class="main-comments-box4">
       <% currentChannel.post.forEach(post => { %>
       <li>
@@ -42,6 +41,16 @@
             >
           </button>
         </div>
+        <ul>
+          <% post.replies.forEach((reply)=>{%>
+            <li>
+               <%= reply.reply %>
+               <%= reply.username %>
+            </li>
+            
+         <% }) %> 
+        </ul>
+       
       </li>
       <% }) %>
     </div>

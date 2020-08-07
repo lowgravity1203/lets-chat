@@ -1,8 +1,49 @@
-
 <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
 <script defer src="js/script.js"></script>
-<div id="message-container"></div>
-<form id="send-container">
-  <input type="text" id="message-input" />
-  <button type="submit" id="send-button">Send</button>
-</form>
+
+<main class="main--grid-channels">
+  <div class="channel--grid">
+    <div class="boxes box1">
+      <h1>#Chatroom</h1>
+    </div>
+
+    <!-- chat -->
+    <div class="box5" class="box5-chat">
+      <form id="send-container" autocomplete="off">
+        <input type="text" id="message-input" />
+        <button type="submit" id="send-btn">Send</button>
+      </form>
+    </div>
+
+    <%- include("../partials/box2.ejs") %>
+
+    <!-- This will display the other channels  -->
+    <div class="boxes box3">
+      <div class="posts-flex-ctn">
+        <div id="ct1" class="channels-title">#Chatroom</div>
+        <div>
+          <a class="flex-item" href="/chat"> #LiveChat 💬 </a>
+        </div>
+        <br />
+        <div id="ct2" class="channels-title">#Channels</div>
+        <ul>
+          <% currentUser.interests.forEach(interest => { %> <%
+          interest.name.forEach(item => { %>
+          <li>
+            <a href="/channel/<%= currentUser._id %>/<%= item %>"
+              >#<%= item %></a
+            >
+          </li>
+          <% }) %> <% }) %>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Chatroom -->
+
+    <div class="box4 box4-chat">
+      <div id="message-container"></div>
+    </div>
+    <!-- You can write a post here -->
+  </div>
+</main>

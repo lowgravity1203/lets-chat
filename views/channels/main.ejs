@@ -2,6 +2,7 @@
   <div class="channel--grid">
     <div class="boxes box1">
       <h1>#Main</h1>
+
       <div class="search-bar">
         <input
           class="input-search"
@@ -28,20 +29,27 @@
 
     <!-- This will display the other channels  -->
     <div class="boxes box3">
-      <div class="channels-title">Channels</div>
-      <ul>
-        <% currentUser.interests.forEach(interest => { %> <%
-        interest.name.forEach(item => { %>
-        <li>
-          <a href="/channel/<%= currentUser._id %>/<%= item %>"><%= item %></a>
-        </li>
-        <% }) %> <% }) %>
-      </ul>
+      <div class="posts-flex-ctn">
+        <div id="ct1" class="channels-title">#Chatroom</div>
+        <div>
+          <a class="flex-item" href="/chat"> #LiveChat 💬 </a>
+        </div>
+        <br />
+        <div id="ct2" class="channels-title">#Channels</div>
+        <ul>
+          <% currentUser.interests.forEach(interest => { %> <%
+          interest.name.forEach(item => { %>
+          <li>
+            <a href="/channel/<%= currentUser._id %>/<%= item %>"
+              >#<%= item %></a
+            >
+          </li>
+          <% }) %> <% }) %>
+        </ul>
+      </div>
     </div>
 
     <!-- This will display the posts -->
     <%- include("../partials/box4.ejs") %>
-
-    <!-- You can write a post here -->
   </div>
 </main>

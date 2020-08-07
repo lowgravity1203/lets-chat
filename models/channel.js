@@ -1,12 +1,14 @@
-const mongoose = require("mongoose")
+const mongoose = require('mongoose')
 
 const channelSchema = new mongoose.Schema({
-    name: String,
-    post: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Post'
-    }],
-    tag: [String]
+  name: String,
+  post: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Post',
+    },
+  ],
+  tag: [String],
 })
 
 const Channel = mongoose.model('Channel', channelSchema)

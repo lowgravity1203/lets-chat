@@ -6,8 +6,12 @@
       <%= post.author.username %> <%= post.text %> <%= post.tag %>
     </div>
     <br />
-    <form action="" method="POST">
-      <input type="text" />
+    <form
+      action="/channel/<%= currentUser._id %> /<%= currentChannel.name %>/<%= post.id %>/reply  "
+      method="POST"
+    >
+      <input type="text" name="reply" placeholder="reply" />
+      <button class="btn-reply" type="submit">Submit</button>
     </form>
   </div>
 </div>
