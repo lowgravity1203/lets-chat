@@ -27,16 +27,16 @@ CHANNEL pagewill have the name of the CHANNEL in the header and right beneath CH
 
 Models Organization:
 
-![ERD] (/db/Models.png)
+![ERD](/db/Models.png)
 
 Wireframes:
 
-![ERD] (images/wireframes-onboarding)
-![ERD] (images/wireframes-onboarding(1))
-![ERD] (images/wireframes-interests)
-![ERD] (images/wireframes-interests(1))
-![ERD] (images/wireframes-General)
+![ERD](db/wireframes-onboarding)
+![ERD](db/wireframes-onboarding(1))
+![ERD](db/wireframes-interests)
+![ERD](db/wireframes-interests(1))
+![ERD](db/wireframes-General)
 
 Workflow chart:
 
-![ERD] (db/flowchart-mvp-v1)
+![ERD](db/flowchart-mvp-v1)
