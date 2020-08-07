@@ -31,11 +31,11 @@ Models Organization:
 
 Wireframes:
 
-![ERD](/db/wireframes-onboarding.png)
-![ERD](/db/wireframes-onboarding(1).png)
-![ERD](/db/wireframes-interests.png)
-![ERD](/db/wireframes-interests(1).png)
-![ERD](/db/wireframes-General.png)
+![ERD](/db/onboarding.png)
+![ERD](/db/onboardingmobile.png)
+![ERD](/db/interests.png)
+![ERD](/db/interestsmobile.png)
+![ERD](/db/general.png)
 
 Workflow chart:
 
