@@ -31,12 +31,12 @@ Models Organization:
 
 Wireframes:
 
-![ERD](db/wireframes-onboarding)
-![ERD](db/wireframes-onboarding(1))
-![ERD](db/wireframes-interests)
-![ERD](db/wireframes-interests(1))
-![ERD](db/wireframes-General)
+![ERD](/db/wireframes-onboarding)
+![ERD](/db/wireframes-onboarding(1))
+![ERD](/db/wireframes-interests)
+![ERD](/db/wireframes-interests(1))
+![ERD](/db/wireframes-General)
 
 Workflow chart:
 
-![ERD](db/flowchart-mvp-v1)
+![ERD](/db/flowchart-mvp-v1)
