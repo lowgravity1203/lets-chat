@@ -28,7 +28,7 @@ body {
   grid-template-columns: repeat(5, 1fr);
   background-color: #fff;
   color: #444;
-  grid-template-areas: 'box1 box1 box1 box1 box1' 'box3 box5 box5 box5 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2' 'box3 box4 box4 box4 box2'; }
+  grid-template-areas: "box1 box1 box1 box1 box1" "box3 box5 box5 box5 box2" "box3 box4 box4 box4 box2" "box3 box4 box4 box4 box2" "box3 box4 box4 box4 box2" "box3 box4 box4 box4 box2" "box3 box4 box4 box4 box2"; }
   .main--grid-channels .channel--grid .boxes {
     background-color: #444;
     color: #fff;
@@ -45,7 +45,7 @@ body {
     grid-area: box2; }
   .main--grid-channels .channel--grid .box3 {
     grid-area: box3;
-    overflow-y: scroll; }
+    background-color: #a37c02; }
   .main--grid-channels .channel--grid .box4 {
     grid-area: box4;
     background-color: #00879a; }
@@ -55,10 +55,19 @@ body {
     margin-bottom: 1rem;
     color: #00879a; }
   .main--grid-channels .channel--grid .channels-title {
+    margin-top: 0.5rem;
     margin-bottom: 1rem;
-    font-weight: bold; }
-  .main--grid-channels .channel--grid .posts-title {
-    margin-left: 0.25rem; }
+    font-weight: bold;
+    color: #8c0874;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 0.1rem 1rem 0.1rem 1rem; }
+  .main--grid-channels .channel--grid .posts-flex-ctn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+    .main--grid-channels .channel--grid .posts-flex-ctn .flex-item {
+      padding-left: 0.2rem; }
   .main--grid-channels .channel--grid .main-title {
     font-weight: bold; }
 
@@ -69,7 +78,7 @@ header nav {
   margin: 0.25rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas: 'box1 box2';
+  grid-template-areas: "box1 box2";
   height: 7vh;
   grid-area: box1;
   list-style-type: none; }
@@ -120,7 +129,7 @@ footer nav {
   font-size: 1rem;
   display: grid;
   grid-template-columns: 2fr 2fr 0.5fr;
-  grid-template-areas: 'column-2 column-1 column-3'; }
+  grid-template-areas: "column-2 column-1 column-3"; }
   footer nav a {
     color: #fff; }
   footer nav .footer--col-1 {
@@ -368,7 +377,7 @@ input,
 .channels-post-ctn {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas: 'ctn1 ctn3 ctn2'; }
+  grid-template-areas: "ctn1 ctn3 ctn2"; }
   .channels-post-ctn .ctn1 {
     grid-area: ctn1;
     justify-self: end; }
@@ -406,10 +415,6 @@ select {
 
 .search-bar .logo {
   color: #fff; }
-
-.posts-flex {
-  display: flex;
-  justify-content: start; }
 
 button {
   outline: none; }
@@ -453,6 +458,53 @@ button {
   .main-comments-box4 .content-box4 {
     color: white; }
 
+.box5-chat {
+  display: flex;
+  justify-content: center; }
+
+.box4-chat {
+  font-size: 1.5rem;
+  padding-top: 40rem;
+  border-radius: 0.5rem;
+  overflow-y: scroll; }
+
+#message-container {
+  width: 100%;
+  max-width: 1200px; }
+
+#message-container div {
+  background-color: #ccc;
+  padding: 0.5rem; }
+
+#message-container div:nth-child(2n) {
+  background-color: #fff; }
+
+#send-container {
+  background-color: white;
+  max-width: 1200px;
+  width: 80%;
+  margin-left: 6rem;
+  display: flex; }
+
+#message-input {
+  flex-grow: 1; }
+
+#send-btn {
+  margin-left: 1.5rem;
+  font-size: 2rem;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.25rem 1rem;
+  background-color: #8c0874;
+  border-style: none; }
+
+.btn-reply {
+  border-radius: 0.5rem;
+  padding: 0.25rem 1rem;
+  background-color: #8c0874;
+  border-style: none;
+  color: white; }
+
 @media (max-width: 50rem) {
   header nav {
     display: flex;
@@ -470,8 +522,16 @@ button {
     overflow-x: scroll;
     overflow-y: scroll; }
     .main--grid-channels .channels-title {
-      font-size: 0.75rem; }
+      font-size: 0.5rem; }
     .main--grid-channels li a {
       font-size: 0.75rem; }
     .main--grid-channels .post {
-      width: 65%; } }
+      width: 65%; }
+    .main--grid-channels .posts-flex-ctn {
+      font-size: 0.75rem; }
+  #ct1 {
+    margin-right: 1rem;
+    padding-right: 4rem; }
+  #ct2 {
+    margin-right: 1rem;
+    padding-right: 4rem; } }
