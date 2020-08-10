@@ -2,8 +2,14 @@
   <div class="channel--grid">
     <div class="boxes box1">
       <h1>#<%= currentChannel.name %></h1>
-      <div class="search-bar">
-        <input class="input-search"type="search" placeholder="🔍 Search..." class="input-field" />
+      <div class="ctn2">
+        <label> 🏷️ sort posts by tag
+        <select class="tag" name="tag">
+          <% currentChannel.tag.forEach(tag => { %>
+          <option value="<%= tag %>"><%= tag %></option>
+          <% }) %>
+        </select>
+      </label>
       </div>
     </div>
 
