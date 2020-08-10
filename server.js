@@ -6,8 +6,7 @@ const mongoose = require("mongoose")
 const config = require("./configuration/config")
 const cookieParser = require('cookie-parser')
 const FacebookStrategy = require('passport-facebook').Strategy
-const google = require('googleapis');
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
 
 //session middleware
 const session = require('express-session');
@@ -28,20 +27,6 @@ const Channel = require('./models/channel')
 const Interest = require('./models/interest')
 const Post = require('./models/post')
 
-
-// data = ["bit manipulation", "logic puzzles", "OO design", "recursion", "sorting", "searching"]
-
-// Channel.findOne({name: "Algorithms"}, (err, channel)=>{
-//  if(err){
-//    console.log(err)
-//  }else {
-//    data.forEach(function(item){
-//      channel.tag.push(item)
-//    })
-//    channel.save()
-//    console.log(channel)
-//  }
-// })
 
 
 //database connection
@@ -118,17 +103,7 @@ passport.deserializeUser(function(obj, done){
   })
 })
 
-// //Google Auth
-// passport.use(new GoogleStrategy({
-//   clientID: config.google_client_id,
-//   clientSecret: config.google_client_secret,
-//   callbackURL: "http://localhost:3000/auth/google/callback"
-// },
-// function(accessToken, refreshToken, profile, done) {
-//     userProfile=profile;
-//     return done(null, userProfile);
-// }
-// ));
+
 
 //Facebook Auth
 passport.use(new FacebookStrategy({ //This is class constructor argument telling Passport to create a new Facebook Auth Strategy
