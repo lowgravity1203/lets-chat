@@ -24,9 +24,11 @@ function sortPosts(){
   for(let j = 0; j < comments.length; j++){
     let commentClass = comments[j].getAttribute("class")
     if(commentClass == opt.value){
-      const li = document.createElement("li")
+      let li = document.createElement("li")
+      // let newLi = document.createTextNode(comments[j])
       li.appendChild(comments[j])
       sortedPosts.appendChild(li)
+      
     }
   }
 }
