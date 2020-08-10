@@ -83,6 +83,7 @@ function ensureAuthenticated(req, res, next) {
 //Logout route
 router.get('/logout', (req, res) => {
   req.logout()
+  console.log("logged out")
   res.redirect('/')
 })
 
