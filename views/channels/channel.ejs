@@ -1,14 +1,17 @@
 <main class="main--grid-channels">
   <div class="channel--grid">
     <div class="boxes box1">
-      <h1>#<%= currentChannel.name %></h1>
+      <h1 id="currentChannel">#<%= currentChannel.name %></h1>
       <div class="ctn2">
         <label> 🏷️ sort posts by tag
-        <select class="tag" name="tag">
+        <select id="select" class="tag" name="tag">
           <% currentChannel.tag.forEach(tag => { %>
           <option value="<%= tag %>"><%= tag %></option>
           <% }) %>
         </select>
+        <button type="button" onclick="sortPosts()">
+          Choose
+        </button>
       </label>
       </div>
     </div>
@@ -46,7 +49,7 @@
 
     <!-- Posts sorted by tag will display here -->
 
-    <%- include("../partials/box2.ejs") %>
+    <%- include("../partials/sortedPosts.ejs") %>
 
     <!-- This will display the other channels  -->
     <div class="boxes box3">
@@ -64,6 +67,6 @@
     </div>
 
     <!-- This will display the posts -->
-    <%- include("../partials/box4.ejs") %>
+    <%- include("../partials/mainPosts.ejs") %>
   </div>
 </main>
