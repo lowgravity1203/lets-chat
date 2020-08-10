@@ -1,20 +1,21 @@
-const mongoose = require("mongoose")
-
+const mongoose = require('mongoose')
 
 const postSchema = new mongoose.Schema({
-    text: String,
-    tag: String,
-    author: {
-      id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-      },
-      username: String
+  text: String,
+  tag: String,
+  author: {
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
     },
-    replies: [{
-        reply: String,
-        username: String
-    }]
+    username: String,
+  },
+  replies: [
+    {
+      reply: String,
+      username: String,
+    },
+  ],
 })
 
 const Post = mongoose.model('Post', postSchema)

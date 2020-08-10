@@ -1,28 +1,18 @@
+<script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+<script defer src="js/script.js"></script>
+
 <main class="main--grid-channels">
   <div class="channel--grid">
     <div class="boxes box1">
-      <h1>#Main</h1>
-
-      <div class="search-bar">
-        <input
-          class="input-search"
-          type="search"
-          placeholder="🔍 Search..."
-          class="input-field"
-        />
-      </div>
+      <h1>#Chatroom</h1>
     </div>
 
-    <div class="boxes box5">
-      <div class="main-post-ctn">
-        <form
-          action="/channel/<%= currentUser._id %>/<%= currentChannel.name %>"
-          method="POST"
-        >
-          <input type="text" name="text" class="post" placeholder="📝" />
-          <button class="post-btn" type="submit">Send</button>
-        </form>
-      </div>
+    <!-- chat -->
+    <div class="box5" class="box5-chat">
+      <form id="send-container" autocomplete="off">
+        <input type="text" id="message-input" />
+        <button type="submit" id="send-btn">Send</button>
+      </form>
     </div>
 
     <%- include("../partials/box2.ejs") %>
@@ -49,7 +39,11 @@
       </div>
     </div>
 
-    <!-- This will display the posts -->
-    <%- include("../partials/box4.ejs") %>
+    <!-- Chatroom -->
+
+    <div class="box4 box4-chat">
+      <div id="message-container"></div>
+    </div>
+    <!-- You can write a post here -->
   </div>
 </main>
