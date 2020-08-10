@@ -44,10 +44,8 @@
         <ul>
           <% post.replies.forEach((reply)=>{%>
             <li>
-               <%= reply.reply %>
-               <%= reply.username %>
-            </li>
-            
+                        <%= reply.username %> - <%= reply.reply %>
+            </li> 
          <% }) %> 
         </ul>
        
