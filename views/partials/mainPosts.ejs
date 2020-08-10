@@ -1,8 +1,8 @@
 <div class="boxes box4">
- 
+  <ul id="comments">
     <div class="main-comments-box4">
       <% currentChannel.post.forEach(post => { %>
-      <li>
+      <li class="<%= post.tag %> ">
         🤓: <%= post.author.username %> <br />
         📭: <%= post.text %> <br />
         <% if(isAChannelPage) { %>
@@ -44,7 +44,7 @@
         <ul>
           <% post.replies.forEach((reply)=>{%>
             <li>
-                        <%= reply.username %> - <%= reply.reply %>
+                <%= reply.username %> - <%= reply.reply %>
             </li> 
          <% }) %> 
         </ul>

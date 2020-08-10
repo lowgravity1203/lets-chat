@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser')
 const FacebookStrategy = require('passport-facebook').Strategy
 const { setUpSocketBasedChat } = require('./socketBasedChat')
 
+
 //session middleware
 const session = require('express-session')
 const passport = require('passport')
@@ -24,6 +25,8 @@ const PORT = process.env.PORT || 3000
 // models
 const User = require('./models/user')
 const Post = require('./models/post')
+
+
 
 //database connection
 dbURI = process.env.ATLAS_URI
